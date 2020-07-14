@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/router_utils.dart';
+import 'package:inshort_clone/view/photo_expanded_screen.dart';
 import 'package:inshort_clone/view/search_screen/search.dart';
 import 'package:inshort_clone/view/settings_screen/settings.dart';
 import 'package:inshort_clone/view/bookmarked_screen/bookmark.dart';
@@ -24,6 +25,8 @@ class Router {
   static const discoverScreen = '/discover-screen';
   static const feedScreen = '/feed-screen';
   static const appBase = '/';
+  static const expandedImageView = '/expandedImageView';
+
   static GlobalKey<NavigatorState> get navigatorKey =>
       getNavigatorKey<Router>();
   static NavigatorState get navigator => navigatorKey.currentState;
@@ -60,6 +63,19 @@ class Router {
           builder: (_) => DiscoverScreen(),
           settings: settings,
         );
+      case Router.expandedImageView:
+        if (hasInvalidArgs<ExpandedImageViewArguments>(args,
+            isRequired: true)) {
+          return misTypedArgsRoute<ExpandedImageViewArguments>(args);
+        }
+        final typedArgs = args as ExpandedImageViewArguments;
+        return MaterialPageRoute(
+          builder: (_) => ExpandedImageView(
+            image: typedArgs.image,
+          ),
+          settings: settings,
+        );
+
       case Router.feedScreen:
         if (hasInvalidArgs<FeedScreenArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<FeedScreenArguments>(args);
@@ -73,6 +89,7 @@ class Router {
               isFromSearch: typedArgs.isFromSearch),
           settings: settings,
         );
+
       case Router.appBase:
         return MaterialPageRoute(
           builder: (_) => AppBase(),
@@ -99,4 +116,11 @@ class FeedScreenArguments {
       @required this.articalIndex,
       @required this.articals,
       @required this.isFromSearch});
+}
+
+class ExpandedImageViewArguments {
+  final String image;
+  ExpandedImageViewArguments({
+    @required this.image,
+  });
 }

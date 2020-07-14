@@ -8,31 +8,9 @@ import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:provider/provider.dart';
 
-class CustomAppBar extends StatefulWidget {
+class CustomAppBar extends StatelessWidget {
   final int index;
-  final PageController pageController;
-  const CustomAppBar({Key key, this.index = 1, this.pageController})
-      : super(key: key);
-
-  @override
-  _CustomAppBarState createState() => _CustomAppBarState();
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
-  int _currentArticalIndex;
-
-  @override
-  void initState() {
-    FeedController.currentArticalStream.listen((event) {
-      if (event != null) {
-        setState(() {
-          _currentArticalIndex = event;
-        });
-      }
-    });
-
-    super.initState();
-  }
+  const CustomAppBar({Key key, this.index = 1}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +29,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     Expanded(
                         child: Align(
                       alignment: Alignment.centerLeft,
-                      child: widget.index != 1
+                      child: index != 1
                           ? IconButton(
                               icon: Icon(
                                 FeatherIcons.settings,
@@ -81,7 +59,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     )),
                     Expanded(
                       child: Text(
-                        widget.index == 1
+                        index == 1
                             ? value.appBarTitle != null
                                 ? value.appBarTitle
                                 : "My Feed"
@@ -99,7 +77,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
-                            widget.index != 1
+                            index != 1
                                 ? Text(
                                     value.appBarTitle != null
                                         ? value.appBarTitle
@@ -107,29 +85,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                     style: AppTextStyle.appBarTitle,
                                   )
                                 : Container(),
-                            IconButton(
-                              icon: Icon(
-                                widget.index != 1
-                                    ? FeatherIcons.chevronRight
-                                    : value.hasDataLoaded
-                                        ? _currentArticalIndex == null
-                                            ? FeatherIcons.rotateCw
-                                            : FeatherIcons.arrowUp
-                                        : FeatherIcons.loader,
-                                color: AppColor.accent,
-                              ),
-                              onPressed: () {
-                                if (!value.hasDataLoaded) {
-                                  return null;
-                                } else if (_currentArticalIndex != null &&
-                                    _currentArticalIndex > 0) {
-                                  bringToTop(widget.pageController);
-                                } else {
-                                  print("Refresh");
-                                }
-                                print(value.hasDataLoaded);
-                              },
-                            ),
+                            getIcon(context)
                           ],
                         ),
                       ),
@@ -150,6 +106,29 @@ class _CustomAppBarState extends State<CustomAppBar> {
   }
 
   void bringToTop(PageController pageController) {
-    pageController.jumpToPage(0);
+    pageController.animateToPage(0,
+        duration: Duration(milliseconds: 700), curve: Curves.easeInBack);
+  }
+
+  IconButton getIcon(context) {
+    final provider = Provider.of<FeedProvider>(context, listen: false);
+
+    if (index != 1) {
+      return IconButton(
+          icon: Icon(FeatherIcons.chevronRight),
+          onPressed: () {
+            FeedController.addCurrentPage(1);
+          });
+    } else {
+      if (provider.gethasDataLoaded) {
+        return provider.getCurentArticalIndex == 0
+            ? IconButton(icon: Icon(FeatherIcons.rotateCw), onPressed: () {})
+            : IconButton(
+                icon: Icon(FeatherIcons.arrowUp),
+                onPressed: () => bringToTop(provider.getfeedPageController));
+      } else {
+        return IconButton(icon: Icon(FeatherIcons.loader), onPressed: null);
+      }
+    }
   }
 }

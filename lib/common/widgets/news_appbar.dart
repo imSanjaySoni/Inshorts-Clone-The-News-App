@@ -1,7 +1,9 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
+import 'package:provider/provider.dart';
 
 class NewsCardAppBar extends StatelessWidget {
   @override
@@ -39,6 +41,18 @@ class NewsCardAppBar extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
+                  Consumer<FeedProvider>(
+                    builder: (context, value, child) =>
+                        value.getCurentArticalIndex != 0
+                            ? IconButton(
+                                icon: Icon(FeatherIcons.arrowUp),
+                                onPressed: () {
+                                  value.getfeedPageController.animateToPage(0,
+                                      duration: Duration(milliseconds: 700),
+                                      curve: Curves.easeInBack);
+                                })
+                            : Container(),
+                  )
                 ],
               ),
             ],

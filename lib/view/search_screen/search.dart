@@ -58,7 +58,17 @@ class SearchScreen extends StatelessWidget {
             if (state is SearchFeedInitialState) {
               return Container();
             } else if (state is SearchFeedLoadingState) {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    CircularProgressIndicator(),
+                    SizedBox(height: 8),
+                    Text(
+                      "Loading Shots..",
+                      style: AppTextStyle.searchbar,
+                    )
+                  ]));
             } else if (state is SearchFeedLoadedState) {
               if (state.news.length == 0) {
                 return Center(child: Text("Nothing Found ! \n"));

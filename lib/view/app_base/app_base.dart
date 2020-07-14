@@ -6,10 +6,12 @@ import 'package:inshort_clone/bloc/feed/news_feed_state.dart';
 import 'package:inshort_clone/common/loading_shorts.dart';
 import 'package:inshort_clone/common/widgets/appbar.dart';
 import 'package:inshort_clone/controller/feed_controller.dart';
+import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/discover_screen/discover.dart';
 import 'package:inshort_clone/view/feed_screen/feed.dart';
+import 'package:provider/provider.dart';
 
 class AppBase extends StatefulWidget {
   @override
@@ -18,12 +20,8 @@ class AppBase extends StatefulWidget {
 
 class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
   int currentPage = 1;
-  bool visible = true;
-  int articalIndex;
-  bool hasDataLoaded = false;
   List<Widget> _pageItems;
   PageController _pageController;
-  String title;
 
   @override
   void initState() {
@@ -36,14 +34,6 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
       ..add(
         FetchNewsByCategoryEvent(category: "general"),
       );
-
-    FeedController.appBarStream.listen((event) {
-      if (event != null) {
-        setState(() {
-          visible = event;
-        });
-      }
-    });
 
     _pageController = PageController(
       initialPage: currentPage,
@@ -60,41 +50,36 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          PageView(
-            controller: _pageController,
-            onPageChanged: (page) {
-              setState(() {
+    return Consumer<FeedProvider>(
+      builder: (context, value, child) => Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            PageView(
+              controller: _pageController,
+              onPageChanged: (page) {
                 currentPage = _pageController.page.round();
                 if (currentPage == 2) {
-                  visible = false;
+                  value.setAppBarVisible(false);
                 } else {
-                  visible = true;
+                  value.setAppBarVisible(true);
                 }
-              });
-            },
-            children: _pageItems,
-          ),
-          appBar(),
-        ],
+              },
+              children: _pageItems,
+            ),
+            value.getAppBarVisible
+                ? Align(
+                    alignment: Alignment.topCenter,
+                    child: CustomAppBar(
+                      index: currentPage,
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
       ),
     );
-  }
-
-  Widget appBar() {
-    return !visible
-        ? Container()
-        : Align(
-            alignment: Alignment.topCenter,
-            child: CustomAppBar(
-              index: currentPage,
-              pageController: _pageController,
-            ),
-          );
   }
 
   Widget buildNewsScreen() {

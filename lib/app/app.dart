@@ -29,6 +29,7 @@ class App extends StatelessWidget {
           errorColor: AppColor.error,
           cursorColor: AppColor.primaryVariant,
           scaffoldBackgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: AppColor.accent),
         ),
         onGenerateRoute: Router.onGenerateRoute,
         navigatorKey: Router.navigatorKey,
