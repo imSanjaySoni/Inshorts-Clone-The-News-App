@@ -21,8 +21,10 @@ class NewsCard extends StatelessWidget {
   @override
   build(BuildContext context) {
     final provider = Provider.of<FeedProvider>(context, listen: false);
+    provider.setNewsURL(articles.url);
+    print(articles.url);
 
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         provider.setAppBarVisible(!provider.getAppBarVisible);
         provider.setSearchAppBarVisible(!provider.getSearchAppBarVisible);
@@ -31,12 +33,12 @@ class NewsCard extends StatelessWidget {
       },
       child: SafeArea(
         bottom: false,
-        child: _buildCard(context),
+        child: _buildCard(context, provider),
       ),
     );
   }
 
-  Widget _buildCard(BuildContext context) {
+  Widget _buildCard(BuildContext context, provider) {
     GlobalKey _containerKey = GlobalKey();
 
     return Consumer<FeedProvider>(builder: (context, value, _) {
@@ -129,6 +131,8 @@ class NewsCard extends StatelessWidget {
                                 Text(
                                   articles.title,
                                   style: AppTextStyle.newsTitle,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 4,
                                 ),
                                 SizedBox(
                                   height: 8,
@@ -138,7 +142,6 @@ class NewsCard extends StatelessWidget {
                                       ? articles.description
                                       : "",
                                   style: AppTextStyle.newsSubtitle,
-                                  maxLines: 9,
                                 ),
                                 SizedBox(
                                   height: 16,

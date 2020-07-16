@@ -22,7 +22,6 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   void initState() {
     bloc = BlocProvider.of<NewsFeedBloc>(context);
-
     super.initState();
   }
 
@@ -50,7 +49,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       CategoryCard(
                         title: "MY FEED",
                         icon: "all",
-                        active: provider.activeCategory == 1,
+                        active: provider.getActiveCategory == 1,
                         onTap: () {
                           provider.setActiveCategory(1);
                           provider.setAppBarTitle("My Feed");
@@ -63,7 +62,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       CategoryCard(
                         title: "TRENDING",
                         icon: "trending",
-                        active: provider.activeCategory == 2,
+                        active: provider.getActiveCategory == 2,
                         onTap: () {
                           provider.setActiveCategory(2);
                           provider.setAppBarTitle("Trending");
@@ -76,7 +75,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       CategoryCard(
                         title: "BOOKMARKS",
                         icon: "bookmark",
-                        active: provider.activeCategory == 3,
+                        active: provider.getActiveCategory == 3,
                         onTap: () {
                           provider.setActiveCategory(3);
                           provider.setAppBarTitle("Bookmarks");
@@ -89,7 +88,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       CategoryCard(
                         title: "UNREAD",
                         icon: "unread",
-                        active: provider.activeCategory == 4,
+                        active: provider.getActiveCategory == 4,
                         onTap: () {
                           provider.setActiveCategory(4);
                           provider.setAppBarTitle("Unread");

@@ -31,6 +31,7 @@ class App extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           iconTheme: IconThemeData(color: AppColor.accent),
         ),
+        themeMode: ThemeMode.dark,
         onGenerateRoute: Router.onGenerateRoute,
         navigatorKey: Router.navigatorKey,
       ),

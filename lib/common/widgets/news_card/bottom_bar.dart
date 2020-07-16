@@ -17,7 +17,8 @@ class BottomBar extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => WebScreen(articles.url),
+          builder: (context) =>
+              WebScreen(url: articles.url, isFromBottom: true),
         ),
       ),
       child: Stack(

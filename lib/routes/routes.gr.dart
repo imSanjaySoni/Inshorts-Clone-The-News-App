@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/router_utils.dart';
-import 'package:inshort_clone/view/photo_expanded_screen.dart';
+import 'package:inshort_clone/view/photo_view/photo_expanded_screen.dart';
 import 'package:inshort_clone/view/search_screen/search.dart';
 import 'package:inshort_clone/view/settings_screen/settings.dart';
 import 'package:inshort_clone/view/bookmarked_screen/bookmark.dart';
@@ -50,12 +50,15 @@ class Router {
           settings: settings,
         );
       case Router.webScreen:
-        if (hasInvalidArgs<String>(args)) {
-          return misTypedArgsRoute<String>(args);
+        if (hasInvalidArgs<WebViewArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<WebViewArguments>(args);
         }
-        final typedArgs = args as String;
+        final typedArgs = args as WebViewArguments;
         return MaterialPageRoute(
-          builder: (_) => WebScreen(typedArgs),
+          builder: (_) => WebScreen(
+            url: typedArgs.url,
+            isFromBottom: typedArgs.isFromBottom,
+          ),
           settings: settings,
         );
       case Router.discoverScreen:
@@ -123,4 +126,11 @@ class ExpandedImageViewArguments {
   ExpandedImageViewArguments({
     @required this.image,
   });
+}
+
+class WebViewArguments {
+  final String url;
+  final bool isFromBottom;
+
+  WebViewArguments({@required this.url, @required this.isFromBottom});
 }

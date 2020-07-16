@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:inshort_clone/app/dio/dio.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/model/news_model.dart';
@@ -76,7 +77,11 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
   }
 
   @override
-  Future<List<Articles>> getNewsFromLocalStorage() {
-    throw UnimplementedError();
+  Future<List<Articles>> getNewsFromLocalStorage() async {
+    var hiveBox = Hive.box('unread');
+    final unread = await hiveBox.get('unread') as List<Articles>;
+    Hive.box('unread').close();
+
+    return unread;
   }
 }

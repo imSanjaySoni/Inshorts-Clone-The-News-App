@@ -6,7 +6,8 @@ import 'package:inshort_clone/style/colors.dart';
 appSearchBar() {
   return PreferredSize(
     child: Material(
-      elevation: 1,
+      elevation: 0.7,
+      color: Colors.white,
       child: GestureDetector(
         onTap: () {
           Router.navigator.pushNamed(Router.searchScreen);

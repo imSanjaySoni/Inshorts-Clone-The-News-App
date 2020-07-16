@@ -11,6 +11,7 @@ import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/discover_screen/discover.dart';
 import 'package:inshort_clone/view/feed_screen/feed.dart';
+import 'package:inshort_clone/view/web_screen/web.dart';
 import 'package:provider/provider.dart';
 
 class AppBase extends StatefulWidget {
@@ -22,9 +23,12 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
   int currentPage = 1;
   List<Widget> _pageItems;
   PageController _pageController;
+  FeedProvider provider;
 
   @override
   void initState() {
+    provider = Provider.of<FeedProvider>(context, listen: false);
+
     _pageItems = [
       DiscoverScreen(),
       buildNewsScreen(),
@@ -38,6 +42,8 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
     _pageController = PageController(
       initialPage: currentPage,
     );
+
+    provider.setScreenController(_pageController);
 
     FeedController.getCurrentPage((page) {
       _pageController.jumpToPage(page);
@@ -96,12 +102,23 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
             );
           }
 
+          if (provider.count == 0) {
+            _pageItems.add(
+              WebScreen(
+                url: provider.getNewsURL,
+                isFromBottom: false,
+              ),
+            );
+            provider.setCount();
+          }
+
           return FeedScreen(
             isFromSearch: false,
             articalIndex: 0,
             articals: state.news,
           );
         } else if (state is NewsFeedErrorState) {
+          provider.setDataLoaded(true);
           return Container(
             height: double.maxFinite,
             width: double.maxFinite,

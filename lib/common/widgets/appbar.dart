@@ -60,8 +60,8 @@ class CustomAppBar extends StatelessWidget {
                     Expanded(
                       child: Text(
                         index == 1
-                            ? value.appBarTitle != null
-                                ? value.appBarTitle
+                            ? value.getAppBarTitle != null
+                                ? value.getAppBarTitle
                                 : "My Feed"
                             : "Discover",
                         style: AppTextStyle.appBarTitle.copyWith(
@@ -79,10 +79,11 @@ class CustomAppBar extends StatelessWidget {
                           children: <Widget>[
                             index != 1
                                 ? Text(
-                                    value.appBarTitle != null
-                                        ? value.appBarTitle
+                                    value.getAppBarTitle != null
+                                        ? value.getAppBarTitle
                                         : "My Feed",
                                     style: AppTextStyle.appBarTitle,
+                                    overflow: TextOverflow.fade,
                                   )
                                 : Container(),
                             getIcon(context)
@@ -107,7 +108,7 @@ class CustomAppBar extends StatelessWidget {
 
   void bringToTop(PageController pageController) {
     pageController.animateToPage(0,
-        duration: Duration(milliseconds: 700), curve: Curves.easeInBack);
+        duration: Duration(milliseconds: 700), curve: Curves.ease);
   }
 
   IconButton getIcon(context) {

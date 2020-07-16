@@ -1,72 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:inshort_clone/model/news_model.dart';
 
 class FeedProvider extends ChangeNotifier {
-  String appBarTitle;
-  int activeCategory = 1;
-  bool hasDataLoaded = false;
-  bool searchAppBarVisible = true;
-  bool appBarVisible = false;
-  bool feedBottomActionbarVisible = false;
-  int curentArticalIndex = 0;
-  PageController feedPageController;
+  String _appBarTitle;
+  int _activeCategory = 1;
+  bool _hasDataLoaded = false;
+  bool _searchAppBarVisible = true;
+  bool _appBarVisible = false;
+  bool _feedBottomActionbarVisible = false;
+  int _curentArticalIndex = 0;
+  PageController _feedPageController;
+  PageController _screenController;
+  List<Articles> _articles = [];
+  String _newsURL = "https://google.com/";
+  int count = 0;
 
   //
 
-  bool get gethasDataLoaded => this.hasDataLoaded;
+  bool get gethasDataLoaded => this._hasDataLoaded;
 
-  int get getActiveCategory => this.activeCategory;
+  int get getActiveCategory => this._activeCategory;
 
-  String get getAppBarTitle => this.appBarTitle;
+  String get getAppBarTitle => this._appBarTitle;
 
-  bool get getSearchAppBarVisible => this.searchAppBarVisible;
+  bool get getSearchAppBarVisible => this._searchAppBarVisible;
 
-  bool get getAppBarVisible => this.appBarVisible;
+  bool get getAppBarVisible => this._appBarVisible;
 
-  bool get getFeedBottomActionbarVisible => this.feedBottomActionbarVisible;
+  bool get getFeedBottomActionbarVisible => this._feedBottomActionbarVisible;
 
-  int get getCurentArticalIndex => this.curentArticalIndex;
+  int get getCurentArticalIndex => this._curentArticalIndex;
 
-  PageController get getfeedPageController => this.feedPageController;
+  PageController get getfeedPageController => this._feedPageController;
+
+  PageController get getScreenController => this._screenController;
+
+  List<Articles> get getArticlesList => this._articles;
+
+  String get getNewsURL => _newsURL;
 
   ///
 
   void setActiveCategory(int activeCategory) {
-    this.activeCategory = activeCategory;
+    this._activeCategory = activeCategory;
     notifyListeners();
   }
 
   void setAppBarTitle(String appBarTitle) {
-    this.appBarTitle = appBarTitle;
+    this._appBarTitle = appBarTitle;
     notifyListeners();
   }
 
   void setDataLoaded(bool status) {
-    this.hasDataLoaded = status;
+    this._hasDataLoaded = status;
     notifyListeners();
   }
 
   void setSearchAppBarVisible(bool searchAppBarVisible) {
-    this.searchAppBarVisible = searchAppBarVisible;
+    this._searchAppBarVisible = searchAppBarVisible;
     notifyListeners();
   }
 
   void setAppBarVisible(bool appBarVisible) {
-    this.appBarVisible = appBarVisible;
+    this._appBarVisible = appBarVisible;
     notifyListeners();
   }
 
   void setFeedBottomActionbarVisible(bool feedBottomActionbarVisible) {
-    this.feedBottomActionbarVisible = feedBottomActionbarVisible;
+    this._feedBottomActionbarVisible = feedBottomActionbarVisible;
     notifyListeners();
   }
 
   void setCurentArticalIndex(int curentArticalIndex) {
-    this.curentArticalIndex = curentArticalIndex;
+    this._curentArticalIndex = curentArticalIndex;
     notifyListeners();
   }
 
   void setfeedPageController(PageController pageController) {
-    this.feedPageController = pageController;
+    this._feedPageController = pageController;
+    notifyListeners();
+  }
+
+  void setScreenController(PageController pageController) {
+    this._screenController = pageController;
+    // notifyListeners();
+  }
+
+  void setArticlesList(List<Articles> articles) {
+    _articles.addAll(articles);
+    notifyListeners();
+  }
+
+  void setNewsURL(String newsURL) {
+    this._newsURL = newsURL;
+    notifyListeners();
+  }
+
+  void setCount() {
+    this.count++;
     notifyListeners();
   }
 }
