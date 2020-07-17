@@ -56,10 +56,10 @@ class BottomActionBar extends StatelessWidget {
         await boxImage.toByteData(format: ui.ImageByteFormat.png);
     Uint8List uInt8List = byteData.buffer.asUint8List();
     try {
-      await Share.file('imsanjaysoni/InshortClone', 'InshortClone.png',
+      await Share.file('imsanjaysoni/InshortClone', 'inshortClone.png',
           uInt8List, 'image/png',
           text:
-              'this message sent from *Inshorts Clone* \n made by *Sanjay Soni* fork this repository on *Github*\n\n https://github.com/imSanjaySoni/Inshorts-Clone.');
+              'This message sent from *inshorts Clone*\nmade by *Sanjay Soni* fork this repository on *Github*\n\n https://github.com/imSanjaySoni/Inshorts-Clone.');
     } catch (e) {
       print('error: $e');
     }
