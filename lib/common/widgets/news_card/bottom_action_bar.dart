@@ -4,9 +4,12 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'dart:ui' as ui;
+
+import 'package:provider/provider.dart';
 
 class BottomActionBar extends StatelessWidget {
   final containerKey;
@@ -26,7 +29,11 @@ class BottomActionBar extends StatelessWidget {
             title: "Share",
             icon: FeatherIcons.share2,
             onTap: () {
-              _convertWidgetToImageAndShare();
+              Provider.of<FeedProvider>(context, listen: false)
+                  .setWatermarkVisible(true);
+
+              Future.delayed(Duration(seconds: 2),
+                  () => _convertWidgetToImageAndShare(context));
             },
           ),
           actionButton(
@@ -41,7 +48,7 @@ class BottomActionBar extends StatelessWidget {
     );
   }
 
-  void _convertWidgetToImageAndShare() async {
+  void _convertWidgetToImageAndShare(context) async {
     RenderRepaintBoundary renderRepaintBoundary =
         containerKey.currentContext.findRenderObject();
     ui.Image boxImage = await renderRepaintBoundary.toImage(pixelRatio: 1);
@@ -51,10 +58,14 @@ class BottomActionBar extends StatelessWidget {
     try {
       await Share.file('imsanjaysoni/InshortClone', 'InshortClone.png',
           uInt8List, 'image/png',
-          text: 'My optional text.');
+          text:
+              'this message sent from *Inshorts Clone* \n made by *Sanjay Soni* fork this repository on *Github*\n\n https://github.com/imSanjaySoni/Inshorts-Clone.');
     } catch (e) {
       print('error: $e');
     }
+
+    Provider.of<FeedProvider>(context, listen: false)
+        .setWatermarkVisible(false);
   }
 
   Widget actionButton({
