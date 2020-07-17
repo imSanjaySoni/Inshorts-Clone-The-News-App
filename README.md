@@ -5,7 +5,7 @@
 ## Features
 
 - Dark Mode
-- Sare News Card As Image
+- Share News Card As Image
 - Offline Read (inprogress)
 
 ### this is temporary README.md I'll update it soon.
