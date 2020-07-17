@@ -1,5 +1,8 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
+import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
 import 'package:inshort_clone/controller/feed_controller.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/global/global.dart';
@@ -17,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
     return Consumer<FeedProvider>(
       builder: (context, value, child) => SafeArea(
         child: Material(
-          color: Colors.white,
+          // color: Colors.white,
           child: Container(
             height: 52,
             child: Column(
@@ -33,7 +36,6 @@ class CustomAppBar extends StatelessWidget {
                           ? IconButton(
                               icon: Icon(
                                 FeatherIcons.settings,
-                                color: AppColor.accent,
                               ),
                               onPressed: () {
                                 Router.navigator
@@ -45,7 +47,6 @@ class CustomAppBar extends StatelessWidget {
                               children: <Widget>[
                                 IconButton(
                                   icon: Icon(FeatherIcons.chevronLeft),
-                                  color: AppColor.accent,
                                   onPressed: () {
                                     FeedController.addCurrentPage(0);
                                   },
@@ -123,13 +124,42 @@ class CustomAppBar extends StatelessWidget {
     } else {
       if (provider.gethasDataLoaded) {
         return provider.getCurentArticalIndex == 0
-            ? IconButton(icon: Icon(FeatherIcons.rotateCw), onPressed: () {})
+            ? IconButton(
+                icon: Icon(FeatherIcons.rotateCw),
+                onPressed: () {
+                  reloade(context);
+                })
             : IconButton(
                 icon: Icon(FeatherIcons.arrowUp),
                 onPressed: () => bringToTop(provider.getfeedPageController));
       } else {
         return IconButton(icon: Icon(FeatherIcons.loader), onPressed: null);
       }
+    }
+  }
+
+  void reloade(context) {
+    final provider = Provider.of<FeedProvider>(context, listen: false);
+    print(provider.getLastGetRequest.elementAt(0));
+
+    switch (provider.getLastGetRequest.elementAt(0)) {
+      case "getNewsByTopic":
+        BlocProvider.of<NewsFeedBloc>(context)
+          ..add(
+            FetchNewsByTopicEvent(
+                topic: provider.getLastGetRequest.elementAt(1)),
+          );
+        break;
+      case "getNewsByCategory":
+        print(provider.getLastGetRequest);
+        BlocProvider.of<NewsFeedBloc>(context)
+          ..add(
+            FetchNewsByCategoryEvent(
+                category: provider.getLastGetRequest.elementAt(1)),
+          );
+        break;
+      default:
+        return;
     }
   }
 }

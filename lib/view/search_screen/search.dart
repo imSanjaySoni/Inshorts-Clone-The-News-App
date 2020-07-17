@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_bloc.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_event.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_state.dart';
-import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/search_screen/widget/search_news_card.dart';
 
@@ -17,7 +16,7 @@ class SearchScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 1,
-          backgroundColor: AppColor.surface,
+          backgroundColor: Theme.of(context).cardColor,
           title: TextField(
             autofocus: true,
             controller: _searchController,
@@ -29,13 +28,13 @@ class SearchScreen extends StatelessWidget {
               suffixIcon: IconButton(
                 icon: Icon(
                   FeatherIcons.x,
-                  color: AppColor.grey3,
+                  // color: AppColor.grey3,
                 ),
                 onPressed: () => _searchController.clear(),
               ),
               hintStyle: AppTextStyle.searchbar.copyWith(
-                color: AppColor.grey3,
-              ),
+                  // color: AppColor.grey3,
+                  ),
             ),
             onSubmitted: (s) {
               BlocProvider.of<SearchFeedBloc>(context)
@@ -46,7 +45,7 @@ class SearchScreen extends StatelessWidget {
           leading: IconButton(
             icon: Icon(
               FeatherIcons.arrowLeft,
-              color: AppColor.grey3,
+              // color: AppColor.grey3,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -85,9 +84,10 @@ class SearchScreen extends StatelessWidget {
               );
             } else if (state is SearchFeedErrorState) {
               return Container(
+                padding: const EdgeInsets.all(16),
                 height: double.maxFinite,
                 width: double.maxFinite,
-                color: AppColor.background,
+                // color: AppColor.background,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -97,8 +97,9 @@ class SearchScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      "Please check your internet connection and retry",
+                      "Please check your internet connection and retry!",
                       style: AppTextStyle.searchbar,
+                      textAlign: TextAlign.center,
                     )
                   ],
                 ),

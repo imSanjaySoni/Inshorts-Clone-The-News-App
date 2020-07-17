@@ -49,7 +49,7 @@ class SearchNewsCard extends StatelessWidget {
                         article.title,
                         overflow: TextOverflow.fade,
                         style: TextStyle(
-                            color: AppColor.onBackground,
+                            // color: AppColor.onBackground,
                             fontSize: 14,
                             height: 1.2,
                             fontWeight: FontWeight.w300),

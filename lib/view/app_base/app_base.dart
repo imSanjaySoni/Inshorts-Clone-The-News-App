@@ -7,7 +7,6 @@ import 'package:inshort_clone/common/loading_shorts.dart';
 import 'package:inshort_clone/common/widgets/appbar.dart';
 import 'package:inshort_clone/controller/feed_controller.dart';
 import 'package:inshort_clone/controller/provider.dart';
-import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/discover_screen/discover.dart';
 import 'package:inshort_clone/view/feed_screen/feed.dart';
@@ -122,7 +121,7 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
           return Container(
             height: double.maxFinite,
             width: double.maxFinite,
-            color: AppColor.background,
+            // color: AppColor.background,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

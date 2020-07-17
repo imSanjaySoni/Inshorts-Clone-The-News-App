@@ -6,22 +6,22 @@ class AppTextStyle {
   AppTextStyle._();
 
   static final TextStyle appBarTitle = TextStyle(
-    color: AppColor.onBackground,
+    // color: AppColor.onBackground,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
 
   static final TextStyle newsTitle = TextStyle(
-    color: AppColor.onBackground,
+    // color: AppColor.onBackground,
     fontSize: 20,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
   );
 
   static final TextStyle newsSubtitle = TextStyle(
-    color: AppColor.grey2,
+    // color: AppColor.grey2,
     fontSize: 15,
-    height: 1.5,
-    fontWeight: FontWeight.w300,
+    height: 1.7,
+    fontWeight: FontWeight.w400,
   );
 
   static final TextStyle newsFooter = TextStyle(
@@ -41,12 +41,12 @@ class AppTextStyle {
   );
 
   static final TextStyle headline = TextStyle(
-    color: AppColor.onBackground,
+    // color: AppColor.onBackground,
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
   static final TextStyle topiccardTitle = TextStyle(
-    color: AppColor.onBackground,
+    // color: AppColor.onBackground,
     fontSize: 14,
     fontWeight: FontWeight.w600,
   );
@@ -56,7 +56,7 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
   );
   static final TextStyle searchbar = TextStyle(
-    color: AppColor.onBackground,
+    // color: AppColor.onBackground,
     fontSize: 16,
     fontWeight: FontWeight.w300,
   );
@@ -68,7 +68,7 @@ class AppTextStyle {
   );
 
   static final TextStyle loading = TextStyle(
-    color: AppColor.onBackground,
+    // color: AppColor.onBackground,
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );

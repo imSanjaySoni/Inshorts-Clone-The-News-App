@@ -22,10 +22,13 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
 
   @override
   Future<List<Articles>> getNewsByTopic(String topic) async {
+    final String url = "everything?q=$topic";
     final provider = Provider.of<FeedProvider>(context, listen: false);
 
     provider.setDataLoaded(false);
-    final String url = "everything?q=$topic";
+    provider.setLastGetRequest("getNewsByTopic", topic);
+    print("getNewsByTopic" + " " + topic);
+
     Response response = await GetDio.getDio().get(url);
     if (response.statusCode == 200) {
       List<Articles> articles = NewsModel.fromJson(response.data).articles;
@@ -39,10 +42,11 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
 
   @override
   Future<List<Articles>> getNewsByCategory(String category) async {
+    final String url = "top-headlines?country=in&category=$category";
     final provider = Provider.of<FeedProvider>(context, listen: false);
 
     provider.setDataLoaded(false);
-    final String url = "top-headlines?country=in&category=$category";
+    provider.setLastGetRequest("getNewsByTopic", category);
 
     Response response = await GetDio.getDio().get(url);
     if (response.statusCode == 200) {

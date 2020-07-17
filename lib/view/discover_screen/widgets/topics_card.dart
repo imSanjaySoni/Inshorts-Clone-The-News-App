@@ -25,7 +25,8 @@ class TopicCard extends StatelessWidget {
           border: Border.all(
             color: AppColor.accent,
           ),
-          color: Colors.white,
+
+          // color: Colors.white,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Stack(

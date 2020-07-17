@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:inshort_clone/controller/provider.dart';
+import 'package:inshort_clone/controller/theme.dart';
 import 'package:inshort_clone/global/global.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/routes/routes.gr.dart';
@@ -56,7 +58,7 @@ class NewsCard extends StatelessWidget {
           child: RepaintBoundary(
             key: _containerKey,
             child: Container(
-              color: Colors.white,
+              color: Theme.of(context).scaffoldBackgroundColor,
               child: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
@@ -96,12 +98,14 @@ class NewsCard extends StatelessWidget {
                         articles.urlToImage != null
                             ? GestureDetector(
                                 onTap: () => Router.navigator.pushNamed(
-                                    Router.expandedImageView,
-                                    arguments: ExpandedImageViewArguments(
-                                        image: articles.urlToImage)),
+                                  Router.expandedImageView,
+                                  arguments: ExpandedImageViewArguments(
+                                    image: articles.urlToImage,
+                                  ),
+                                ),
                                 child: Center(
                                   child: Hero(
-                                    tag: "photo",
+                                    tag: "photoView",
                                     child: Image.network(
                                       articles.urlToImage,
                                       fit: BoxFit.cover,
@@ -124,7 +128,7 @@ class NewsCard extends StatelessWidget {
                           alignment: Alignment.topCenter,
                           heightFactor: 0.85,
                           child: Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.fromLTRB(16, 25, 16, 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
@@ -142,6 +146,8 @@ class NewsCard extends StatelessWidget {
                                       ? articles.description
                                       : "",
                                   style: AppTextStyle.newsSubtitle,
+                                  overflow: TextOverflow.fade,
+                                  maxLines: 9,
                                 ),
                                 SizedBox(
                                   height: 16,
@@ -169,6 +175,51 @@ class NewsCard extends StatelessWidget {
                                 heightFactor: 0.15,
                                 child: BottomActionBar(
                                   containerKey: _containerKey,
+                                ))
+                            : Container(),
+                        value.getWatermarkVisible
+                            ? FractionallySizedBox(
+                                alignment: Alignment.bottomCenter,
+                                heightFactor: 0.15,
+                                child: Material(
+                                  elevation: 0,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Row(
+                                          children: <Widget>[
+                                            Consumer<ThemeProvider>(
+                                              builder:
+                                                  (context, theme, child) =>
+                                                      FaIcon(
+                                                FontAwesomeIcons.github,
+                                                size: 20,
+                                                color: theme.isDarkThemeOn
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                              ),
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text("github/imSanjaySoni"),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Image.asset(
+                                              "assets/icons/logo.png",
+                                              height: 20,
+                                              width: 20,
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text("Inshorts Clone"),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ))
                             : Container(),
                       ],

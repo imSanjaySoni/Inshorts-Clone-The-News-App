@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_bloc.dart';
+import 'package:inshort_clone/controller/theme.dart';
 import 'package:inshort_clone/routes/routes.gr.dart';
 import 'package:inshort_clone/services/news/news_service.dart';
-import 'package:inshort_clone/style/colors.dart';
+import 'package:inshort_clone/style/theme.dart';
+import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
   @override
@@ -22,16 +24,13 @@ class App extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Finacxo",
-        theme: ThemeData(
-          canvasColor: AppColor.background,
-          accentColor: AppColor.accent,
-          errorColor: AppColor.error,
-          cursorColor: AppColor.primaryVariant,
-          scaffoldBackgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: AppColor.accent),
-        ),
-        themeMode: ThemeMode.dark,
+        title: "Inshorts Clone",
+        theme: kLightThemeData,
+        darkTheme: kDarkThemeData,
+        themeMode:
+            Provider.of<ThemeProvider>(context, listen: true).isDarkThemeOn
+                ? ThemeMode.dark
+                : ThemeMode.light,
         onGenerateRoute: Router.onGenerateRoute,
         navigatorKey: Router.navigatorKey,
       ),

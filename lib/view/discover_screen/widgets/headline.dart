@@ -4,7 +4,7 @@ import 'package:inshort_clone/style/text_style.dart';
 
 Widget headLine(String title) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,

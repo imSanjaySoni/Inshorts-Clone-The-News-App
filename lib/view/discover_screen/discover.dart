@@ -28,6 +28,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<FeedProvider>(context, listen: false);
+    provider.setAppBarVisible(true);
 
     return Scaffold(
       appBar: appSearchBar(),

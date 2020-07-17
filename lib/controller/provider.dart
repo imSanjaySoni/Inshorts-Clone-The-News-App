@@ -7,6 +7,7 @@ class FeedProvider extends ChangeNotifier {
   bool _hasDataLoaded = false;
   bool _searchAppBarVisible = true;
   bool _appBarVisible = false;
+  bool _watermarkVisible = true;
   bool _feedBottomActionbarVisible = false;
   int _curentArticalIndex = 0;
   PageController _feedPageController;
@@ -14,6 +15,7 @@ class FeedProvider extends ChangeNotifier {
   List<Articles> _articles = [];
   String _newsURL = "https://google.com/";
   int count = 0;
+  List<String> _lastGetRequest = List<String>();
 
   //
 
@@ -27,6 +29,8 @@ class FeedProvider extends ChangeNotifier {
 
   bool get getAppBarVisible => this._appBarVisible;
 
+  bool get getWatermarkVisible => this._watermarkVisible;
+
   bool get getFeedBottomActionbarVisible => this._feedBottomActionbarVisible;
 
   int get getCurentArticalIndex => this._curentArticalIndex;
@@ -38,6 +42,8 @@ class FeedProvider extends ChangeNotifier {
   List<Articles> get getArticlesList => this._articles;
 
   String get getNewsURL => _newsURL;
+
+  List<String> get getLastGetRequest => _lastGetRequest;
 
   ///
 
@@ -63,6 +69,11 @@ class FeedProvider extends ChangeNotifier {
 
   void setAppBarVisible(bool appBarVisible) {
     this._appBarVisible = appBarVisible;
+    notifyListeners();
+  }
+
+  void setWatermarkVisible(bool visible) {
+    this._watermarkVisible = visible;
     notifyListeners();
   }
 
@@ -98,6 +109,13 @@ class FeedProvider extends ChangeNotifier {
 
   void setCount() {
     this.count++;
+    notifyListeners();
+  }
+
+  void setLastGetRequest(String request, String value) {
+    _lastGetRequest.clear();
+    _lastGetRequest.add(request);
+    _lastGetRequest.add(value);
     notifyListeners();
   }
 }

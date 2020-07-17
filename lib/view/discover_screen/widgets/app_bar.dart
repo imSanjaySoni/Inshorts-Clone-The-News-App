@@ -6,15 +6,15 @@ import 'package:inshort_clone/style/colors.dart';
 appSearchBar() {
   return PreferredSize(
     child: Material(
-      elevation: 0.7,
-      color: Colors.white,
+      elevation: 1,
+      // color: Colors.white,
       child: GestureDetector(
         onTap: () {
           Router.navigator.pushNamed(Router.searchScreen);
         },
         child: Container(
           margin: const EdgeInsets.fromLTRB(16, 98, 16, 16),
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: AppColor.surface,
             borderRadius: BorderRadius.circular(10),

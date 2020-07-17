@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inshort_clone/global/global.dart';
-import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 
 class LoadingShorts extends StatelessWidget {
@@ -19,7 +18,7 @@ class LoadingShorts extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(width: 0.3),
-              color: AppColor.background,
+              color: Theme.of(context).scaffoldBackgroundColor,
             ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),

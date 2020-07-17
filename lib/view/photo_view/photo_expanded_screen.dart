@@ -17,7 +17,7 @@ class ExpandedImageView extends StatelessWidget {
               child: PhotoView(
                 imageProvider: NetworkImage(image),
                 heroAttributes: PhotoViewHeroAttributes(
-                  tag: "photo",
+                  tag: "photoView",
                   transitionOnUserGestures: true,
                 ),
               ),

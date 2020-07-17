@@ -17,7 +17,7 @@ class BottomActionBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      color: AppColor.background,
+      color: Theme.of(context).cardColor,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -49,7 +49,8 @@ class BottomActionBar extends StatelessWidget {
         await boxImage.toByteData(format: ui.ImageByteFormat.png);
     Uint8List uInt8List = byteData.buffer.asUint8List();
     try {
-      await Share.file('esys image', 'esys.png', uInt8List, 'image/png',
+      await Share.file('imsanjaysoni/InshortClone', 'InshortClone.png',
+          uInt8List, 'image/png',
           text: 'My optional text.');
     } catch (e) {
       print('error: $e');
@@ -68,7 +69,7 @@ class BottomActionBar extends StatelessWidget {
         children: <Widget>[
           Icon(
             icon,
-            color: AppColor.iconGrey,
+            color: AppColor.accent,
           ),
           SizedBox(
             height: 8,

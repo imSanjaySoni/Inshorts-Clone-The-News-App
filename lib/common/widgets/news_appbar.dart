@@ -10,7 +10,7 @@ class NewsCardAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Material(
-        color: Colors.white,
+        // color: Colors.white,
         child: Container(
           height: 52,
           child: Column(
