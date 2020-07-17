@@ -7,5 +7,5 @@
 - Dark Mode
 - Share News Card As Image
 - Offline Read (inprogress)
-
+- Watermark on shared news card
 ### this is temporary README.md I'll update it soon.
