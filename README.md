@@ -1,4 +1,4 @@
-<img src="assets/icons/logo.png" height="120", width="120"/>
+<img src=assets/icons/logo.png height=120, width=120/>
 
 # Inshorts clone (The News App)
 
