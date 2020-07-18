@@ -12,8 +12,8 @@
 
 ## Packages Used
 
-- flutter*bloc & Dio : for http Request Handling.
-  * Provider : for State Management.
+- flutter_bloc & Dio : for http Request Handling.
+- Provider : for State Management.
 - Hive : for Local Strorage Management.
 - esys_flutter_share : for Sharing News card.
 - webview_flutter : web view inside the app.
