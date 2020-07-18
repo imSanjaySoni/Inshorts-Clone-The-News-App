@@ -4,7 +4,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -21,7 +21,6 @@ dependencies:
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
   path_provider: ^1.6.5
-  flutter_launcher_icons: ^0.7.5
   esys_flutter_share: ^1.0.2
   provider:
   photo_view: ^0.9.2
@@ -33,6 +32,7 @@ dev_dependencies:
   build_runner:
   auto_route_generator:
   hive_generator:
+  flutter_launcher_icons: ^0.7.5
 
 flutter:
   uses-material-design: true

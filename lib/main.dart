@@ -3,20 +3,23 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/theme.dart';
+import 'package:inshort_clone/model/hive_news_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'app/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var docPath = await getApplicationDocumentsDirectory();
+  final docPath = await getApplicationDocumentsDirectory();
 
   Hive.init(docPath.path);
 
   await Hive.openBox('themeMode');
+  await Hive.openBox('bookmarks');
+  await Hive.openBox('unreads');
+  Hive.registerAdapter<HiveArticles>(HiveArticlesAdapter());
 
-  var _isDarkModeOn = await Hive.box('themeMode').get('isDarkModeOn');
-
+  final _isDarkModeOn = await Hive.box('themeMode').get('isDarkModeOn');
   ThemeProvider().darkTheme(_isDarkModeOn ?? false);
 
   SystemChrome.setSystemUIOverlayStyle(
@@ -28,6 +31,7 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
+
   runApp(
     MultiProvider(
       providers: [

@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 import 'news_model.dart';
-// part 'hive_news_model.g.dart';
+part 'hive_news_model.g.dart';
 
 @HiveType(typeId: 1)
 class HiveArticles extends HiveObject {

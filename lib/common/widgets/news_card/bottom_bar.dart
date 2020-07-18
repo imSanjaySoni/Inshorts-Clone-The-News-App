@@ -41,7 +41,7 @@ class BottomBar extends StatelessWidget {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: Container(
-                  color: Colors.black.withOpacity(0.8),
+                  color: Colors.black.withOpacity(0.2),
                 ),
               ),
             ),

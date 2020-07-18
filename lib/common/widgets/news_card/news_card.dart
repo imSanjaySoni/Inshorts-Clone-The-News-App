@@ -180,7 +180,7 @@ class NewsCard extends StatelessWidget {
                         value.getWatermarkVisible
                             ? FractionallySizedBox(
                                 alignment: Alignment.bottomCenter,
-                                heightFactor: 0.15,
+                                heightFactor: 0.17,
                                 child: Material(
                                   elevation: 0,
                                   child: Padding(

@@ -28,13 +28,10 @@ class SearchScreen extends StatelessWidget {
               suffixIcon: IconButton(
                 icon: Icon(
                   FeatherIcons.x,
-                  // color: AppColor.grey3,
                 ),
                 onPressed: () => _searchController.clear(),
               ),
-              hintStyle: AppTextStyle.searchbar.copyWith(
-                  // color: AppColor.grey3,
-                  ),
+              hintStyle: AppTextStyle.searchbar.copyWith(),
             ),
             onSubmitted: (s) {
               BlocProvider.of<SearchFeedBloc>(context)
@@ -45,7 +42,6 @@ class SearchScreen extends StatelessWidget {
           leading: IconButton(
             icon: Icon(
               FeatherIcons.arrowLeft,
-              // color: AppColor.grey3,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -62,7 +58,7 @@ class SearchScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                     CircularProgressIndicator(),
-                    SizedBox(height: 8),
+                    SizedBox(height: 16),
                     Text(
                       "Loading Shots..",
                       style: AppTextStyle.searchbar,
@@ -87,7 +83,6 @@ class SearchScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 height: double.maxFinite,
                 width: double.maxFinite,
-                // color: AppColor.background,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

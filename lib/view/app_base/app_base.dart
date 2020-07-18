@@ -121,7 +121,7 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
           return Container(
             height: double.maxFinite,
             width: double.maxFinite,
-            // color: AppColor.background,
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -133,6 +133,7 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
                 Text(
                   "Please check your internet connection and retry",
                   style: AppTextStyle.searchbar,
+                  textAlign: TextAlign.center,
                 )
               ],
             ),

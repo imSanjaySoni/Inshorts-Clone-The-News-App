@@ -59,7 +59,7 @@ class BottomActionBar extends StatelessWidget {
       await Share.file('imsanjaysoni/InshortClone', 'inshortClone.png',
           uInt8List, 'image/png',
           text:
-              'This message sent from *inshorts Clone*\nmade by *Sanjay Soni* fork this repository on *Github*\n\n https://github.com/imSanjaySoni/Inshorts-Clone.');
+              'This message sent from *inshorts Clone* made by *Sanjay Soni*\nFork this repository on *Github*\n\n https://github.com/imSanjaySoni/Inshorts-Clone.');
     } catch (e) {
       print('error: $e');
     }

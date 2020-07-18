@@ -11,6 +11,8 @@ import 'package:provider/provider.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<NewsFeedBloc>(
@@ -22,6 +24,8 @@ class App extends StatelessWidget {
               SearchFeedBloc(repository: NewsFeedRepositoryImpl(context)),
         ),
       ],
+      //
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "Inshorts Clone",
@@ -35,5 +39,7 @@ class App extends StatelessWidget {
         navigatorKey: Router.navigatorKey,
       ),
     );
+
+    //
   }
 }

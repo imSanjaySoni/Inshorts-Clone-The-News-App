@@ -10,11 +10,15 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.7,
+        elevation: 1,
         title: Text(
           "Options",
           style: AppTextStyle.appBarTitle.copyWith(
             fontSize: 18,
+            color:
+                Provider.of<ThemeProvider>(context, listen: false).isDarkThemeOn
+                    ? AppColor.background
+                    : AppColor.onBackground,
           ),
         ),
       ),

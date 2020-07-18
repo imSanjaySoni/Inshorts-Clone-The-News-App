@@ -29,6 +29,7 @@ class _WebScreenState extends State<WebScreen> {
     String url = Provider.of<FeedProvider>(context, listen: false).getNewsURL;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
