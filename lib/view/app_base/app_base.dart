@@ -97,18 +97,21 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
         } else if (state is NewsFeedLoadedState) {
           if (state.news.length == 0) {
             return Center(
-              child: Text("Nothing Found ! \n"),
+              child: Text(
+                "Nothing Found ! \n",
+                style: AppTextStyle.newsTitle,
+              ),
             );
           }
 
-          if (provider.count == 0) {
+          if (provider.webviwAdded == false) {
             _pageItems.add(
               WebScreen(
                 url: provider.getNewsURL,
                 isFromBottom: false,
               ),
             );
-            provider.setCount();
+            provider.setWebViewAdded();
           }
 
           return FeedScreen(
@@ -118,6 +121,7 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
           );
         } else if (state is NewsFeedErrorState) {
           provider.setDataLoaded(true);
+          print(state.message);
           return Container(
             height: double.maxFinite,
             width: double.maxFinite,

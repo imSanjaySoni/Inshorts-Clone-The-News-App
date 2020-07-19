@@ -31,6 +31,14 @@ class NewsFeedBloc extends Bloc<NewsFeedEvent, NewsFeedState> {
       } catch (e) {
         yield NewsFeedErrorState(message: e.toString());
       }
+    } else if (event is FetchNewsFromLocalStorageEvent) {
+      yield NewsFeedLoadingState();
+      try {
+        List<Articles> news = repository.getNewsFromLocalStorage(event.box);
+        yield NewsFeedLoadedState(news: news);
+      } catch (e) {
+        yield NewsFeedErrorState(message: e.toString());
+      }
     }
   }
 }

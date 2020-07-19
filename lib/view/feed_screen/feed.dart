@@ -65,7 +65,7 @@ class _FeedScreenState extends State<FeedScreen>
                       scrollDirection: Axis.vertical,
                       itemBuilder: (_, index) {
                         return NewsCard(
-                          articles: widget.articals[index],
+                          article: widget.articals[index],
                           isFromSearch: widget.isFromSearch,
                         );
                       },
@@ -112,7 +112,7 @@ class _FeedScreenState extends State<FeedScreen>
                   scrollDirection: Axis.vertical,
                   itemBuilder: (_, index) {
                     return NewsCard(
-                      articles: widget.articals[index],
+                      article: widget.articals[index],
                       isFromSearch: widget.isFromSearch,
                     );
                   },

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:inshort_clone/model/news_model.dart';
@@ -29,8 +30,11 @@ class BottomBar extends StatelessWidget {
             Container(
               width: double.maxFinite,
               child: articles.urlToImage != null
-                  ? Image.network(articles.urlToImage,
-                      fit: BoxFit.cover, alignment: Alignment.center)
+                  ? CachedNetworkImage(
+                      imageUrl: articles.urlToImage,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.center,
+                    )
                   : Container(),
             ),
             Positioned(

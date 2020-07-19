@@ -14,7 +14,7 @@ class FeedProvider extends ChangeNotifier {
   PageController _screenController;
   List<Articles> _articles = [];
   String _newsURL = "https://google.com/";
-  int count = 0;
+  bool _webviwAdded = false;
   List<String> _lastGetRequest = List<String>();
 
   //
@@ -44,6 +44,8 @@ class FeedProvider extends ChangeNotifier {
   String get getNewsURL => _newsURL;
 
   List<String> get getLastGetRequest => _lastGetRequest;
+
+  bool get webviwAdded => _webviwAdded;
 
   ///
 
@@ -89,7 +91,7 @@ class FeedProvider extends ChangeNotifier {
 
   void setfeedPageController(PageController pageController) {
     this._feedPageController = pageController;
-    notifyListeners();
+    // notifyListeners();
   }
 
   void setScreenController(PageController pageController) {
@@ -104,12 +106,12 @@ class FeedProvider extends ChangeNotifier {
 
   void setNewsURL(String newsURL) {
     this._newsURL = newsURL;
-    notifyListeners();
+    // notifyListeners();
   }
 
-  void setCount() {
-    this.count++;
-    notifyListeners();
+  void setWebViewAdded() {
+    this._webviwAdded = true;
+    // notifyListeners();
   }
 
   void setLastGetRequest(String request, String value) {

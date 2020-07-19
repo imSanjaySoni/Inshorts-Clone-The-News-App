@@ -84,7 +84,8 @@ class CustomAppBar extends StatelessWidget {
                                         ? value.getAppBarTitle
                                         : "My Feed",
                                     style: AppTextStyle.appBarTitle,
-                                    overflow: TextOverflow.fade,
+                                    overflow: TextOverflow.ellipsis,
+                                    textDirection: TextDirection.rtl,
                                   )
                                 : Container(),
                             getIcon(context)
@@ -151,11 +152,17 @@ class CustomAppBar extends StatelessWidget {
           );
         break;
       case "getNewsByCategory":
-        print(provider.getLastGetRequest);
         BlocProvider.of<NewsFeedBloc>(context)
           ..add(
             FetchNewsByCategoryEvent(
                 category: provider.getLastGetRequest.elementAt(1)),
+          );
+        break;
+      case "getNewsFromLocalStorage":
+        BlocProvider.of<NewsFeedBloc>(context)
+          ..add(
+            FetchNewsFromLocalStorageEvent(
+                box: provider.getLastGetRequest.elementAt(1)),
           );
         break;
       default:

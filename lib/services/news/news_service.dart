@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:inshort_clone/app/dio/dio.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/model/news_model.dart';
+import 'package:inshort_clone/services/news/offline_service.dart';
 import 'package:provider/provider.dart';
 
 abstract class NewsFeedRepository {
@@ -13,7 +14,7 @@ abstract class NewsFeedRepository {
 
   Future<List<Articles>> getNewsBySearchQuery(String query);
 
-  Future<List<Articles>> getNewsFromLocalStorage();
+  List<Articles> getNewsFromLocalStorage(String box);
 }
 
 class NewsFeedRepositoryImpl implements NewsFeedRepository {
@@ -32,7 +33,10 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
     Response response = await GetDio.getDio().get(url);
     if (response.statusCode == 200) {
       List<Articles> articles = NewsModel.fromJson(response.data).articles;
+
       provider.setDataLoaded(true);
+      addArticlesToUnreads(articles);
+
       return articles;
     } else {
       provider.setDataLoaded(true);
@@ -51,7 +55,10 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
     Response response = await GetDio.getDio().get(url);
     if (response.statusCode == 200) {
       List<Articles> articles = NewsModel.fromJson(response.data).articles;
+
       provider.setDataLoaded(true);
+      addArticlesToUnreads(articles);
+
       return articles;
     } else {
       provider.setDataLoaded(true);
@@ -69,9 +76,9 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
 
     Response response = await GetDio.getDio().get(url);
     if (response.statusCode == 200) {
-      print(response.data['status']);
       List<Articles> articles = NewsModel.fromJson(response.data).articles;
-      print(articles.length);
+
+      addArticlesToUnreads(articles);
       provider.setDataLoaded(true);
       return articles;
     } else {
@@ -81,11 +88,27 @@ class NewsFeedRepositoryImpl implements NewsFeedRepository {
   }
 
   @override
-  Future<List<Articles>> getNewsFromLocalStorage() async {
-    var hiveBox = Hive.box('unread');
-    final unread = await hiveBox.get('unread') as List<Articles>;
-    Hive.box('unread').close();
+  List<Articles> getNewsFromLocalStorage(String fromBox) {
+    List<Articles> articles = [];
+    final Box<Articles> hiveBox = Hive.box<Articles>(fromBox);
+    final provider = Provider.of<FeedProvider>(context, listen: false);
 
-    return unread;
+    provider.setLastGetRequest("getNewsFromLocalStorage", fromBox);
+
+    print(fromBox);
+
+    if (hiveBox.length > 0) {
+      for (int i = 0; i < hiveBox.length; i++) {
+        Articles article = hiveBox.getAt(i);
+        articles.add(article);
+      }
+      provider.setDataLoaded(true);
+
+      return articles;
+    } else {
+      provider.setDataLoaded(true);
+      List<Articles> articles = [];
+      return articles;
+    }
   }
 }

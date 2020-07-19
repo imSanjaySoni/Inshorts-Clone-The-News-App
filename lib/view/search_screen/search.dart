@@ -66,7 +66,11 @@ class SearchScreen extends StatelessWidget {
                   ]));
             } else if (state is SearchFeedLoadedState) {
               if (state.news.length == 0) {
-                return Center(child: Text("Nothing Found ! \n"));
+                return Center(
+                    child: Text(
+                  "Nothing Found ! \n",
+                  style: AppTextStyle.newsTitle,
+                ));
               }
               return ListView.builder(
                 itemCount: state.news.length,

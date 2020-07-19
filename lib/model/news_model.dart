@@ -1,3 +1,7 @@
+import 'package:hive/hive.dart';
+
+part 'news_model.g.dart';
+
 class NewsModel {
   String status;
   int totalResults;
@@ -27,18 +31,27 @@ class NewsModel {
   }
 }
 
+@HiveType(typeId: 101)
 class Articles {
-  Source source;
+  @HiveField(0)
+  String sourceName;
+  @HiveField(1)
   String author;
+  @HiveField(2)
   String title;
+  @HiveField(3)
   String description;
+  @HiveField(4)
   String url;
+  @HiveField(5)
   String urlToImage;
+  @HiveField(6)
   String publishedAt;
+  @HiveField(7)
   String content;
 
   Articles(
-      {this.source,
+      {this.sourceName,
       this.author,
       this.title,
       this.description,
@@ -48,8 +61,9 @@ class Articles {
       this.content});
 
   Articles.fromJson(Map<String, dynamic> json) {
-    source =
-        json['source'] != null ? new Source.fromJson(json['source']) : null;
+    sourceName = json['source'] != null
+        ? new Source.fromJson(json['source']).name
+        : null;
     author = json['author'];
     title = json['title'];
     description = json['description'];
@@ -61,8 +75,8 @@ class Articles {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.source != null) {
-      data['source'] = this.source.toJson();
+    if (this.sourceName != null) {
+      data['sourceName'] = this.sourceName;
     }
     data['author'] = this.author;
     data['title'] = this.title;

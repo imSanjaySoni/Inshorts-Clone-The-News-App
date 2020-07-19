@@ -18,6 +18,6 @@
 - esys_flutter_share : for Sharing News card.
 - webview_flutter : web view inside the app.
 - auto_route : Page Routing.
-- photo_view : give extra features like image scaling.
+- photo_view : gives extra features like image scaling.
 
 ### this is temporary README.md I'll update it soon.

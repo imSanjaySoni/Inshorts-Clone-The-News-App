@@ -18,7 +18,8 @@ class FetchNewsByTopicEvent extends NewsFeedEvent {
 }
 
 class FetchNewsFromLocalStorageEvent extends NewsFeedEvent {
-  FetchNewsFromLocalStorageEvent();
+  final String box;
+  FetchNewsFromLocalStorageEvent({@required this.box});
 
-  List<Object> get props => [null];
+  List<Object> get props => [box];
 }

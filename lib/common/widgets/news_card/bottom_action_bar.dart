@@ -1,20 +1,26 @@
-import 'dart:typed_data';
-
-import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inshort_clone/controller/provider.dart';
+import 'package:inshort_clone/model/news_model.dart';
+import 'package:inshort_clone/services/news/offline_service.dart';
+import 'package:inshort_clone/services/news/share_service.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
-import 'dart:ui' as ui;
 
 import 'package:provider/provider.dart';
 
 class BottomActionBar extends StatelessWidget {
   final containerKey;
+  final Articles articles;
 
-  const BottomActionBar({Key key, this.containerKey}) : super(key: key);
+  const BottomActionBar({
+    Key key,
+    this.containerKey,
+    this.articles,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,39 +39,24 @@ class BottomActionBar extends StatelessWidget {
                   .setWatermarkVisible(true);
 
               Future.delayed(Duration(seconds: 2),
-                  () => _convertWidgetToImageAndShare(context));
+                  () => convertWidgetToImageAndShare(context, containerKey));
             },
           ),
-          actionButton(
-            title: "Bookmark",
-            icon: FeatherIcons.bookmark,
-            onTap: () {
-              print("bookmarked");
-            },
+          WatchBoxBuilder(
+            box: Hive.box<Articles>('bookmarks'),
+            builder: (context, snap) => actionButton(
+              title: "Bookmark",
+              icon: snap.containsKey(articles.url)
+                  ? Icons.bookmark
+                  : FeatherIcons.bookmark,
+              onTap: () {
+                handleBookmarks(articles);
+              },
+            ),
           )
         ],
       ),
     );
-  }
-
-  void _convertWidgetToImageAndShare(context) async {
-    RenderRepaintBoundary renderRepaintBoundary =
-        containerKey.currentContext.findRenderObject();
-    ui.Image boxImage = await renderRepaintBoundary.toImage(pixelRatio: 1);
-    ByteData byteData =
-        await boxImage.toByteData(format: ui.ImageByteFormat.png);
-    Uint8List uInt8List = byteData.buffer.asUint8List();
-    try {
-      await Share.file('imsanjaysoni/InshortClone', 'inshortClone.png',
-          uInt8List, 'image/png',
-          text:
-              'This message sent from *inshorts Clone* made by *Sanjay Soni*\nFork this repository on *Github*\n\n https://github.com/imSanjaySoni/Inshorts-Clone.');
-    } catch (e) {
-      print('error: $e');
-    }
-
-    Provider.of<FeedProvider>(context, listen: false)
-        .setWatermarkVisible(false);
   }
 
   Widget actionButton({

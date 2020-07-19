@@ -3,7 +3,7 @@ import 'package:inshort_clone/style/colors.dart';
 
 final ThemeData kDarkThemeData = ThemeData(
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: Color(0xff333333),
+  scaffoldBackgroundColor: Color(0xff222222),
   accentColorBrightness: Brightness.dark,
   primaryColor: AppColor.accent,
   accentIconTheme: IconThemeData(

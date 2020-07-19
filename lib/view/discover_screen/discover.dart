@@ -82,7 +82,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           provider.setAppBarTitle("Bookmarks");
 
                           bloc.add(
-                            FetchNewsByCategoryEvent(category: "general"),
+                            FetchNewsFromLocalStorageEvent(box: 'bookmarks'),
                           );
                         },
                       ),
@@ -95,7 +95,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           provider.setAppBarTitle("Unread");
 
                           bloc.add(
-                            FetchNewsByCategoryEvent(category: "general"),
+                            FetchNewsFromLocalStorageEvent(box: 'unreads'),
                           );
                         },
                       ),

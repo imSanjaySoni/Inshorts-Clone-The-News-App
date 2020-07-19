@@ -16,10 +16,9 @@ class ExpandedImageView extends StatelessWidget {
             Positioned.fill(
               child: PhotoView(
                 imageProvider: NetworkImage(image),
-                heroAttributes: PhotoViewHeroAttributes(
-                  tag: "photoView",
-                  transitionOnUserGestures: true,
-                ),
+                // heroAttributes: PhotoViewHeroAttributes(
+                //   transitionOnUserGestures: true,
+                // ),
               ),
             ),
             Align(

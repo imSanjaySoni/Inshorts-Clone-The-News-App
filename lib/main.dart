@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/theme.dart';
-import 'package:inshort_clone/model/hive_news_model.dart';
+import 'package:inshort_clone/model/news_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'app/app.dart';
@@ -13,11 +13,11 @@ void main() async {
   final docPath = await getApplicationDocumentsDirectory();
 
   Hive.init(docPath.path);
+  Hive.registerAdapter(ArticlesAdapter());
 
   await Hive.openBox('themeMode');
-  await Hive.openBox('bookmarks');
-  await Hive.openBox('unreads');
-  Hive.registerAdapter<HiveArticles>(HiveArticlesAdapter());
+  await Hive.openBox<Articles>('bookmarks');
+  await Hive.openBox<Articles>('unreads');
 
   final _isDarkModeOn = await Hive.box('themeMode').get('isDarkModeOn');
   ThemeProvider().darkTheme(_isDarkModeOn ?? false);
@@ -26,9 +26,8 @@ void main() async {
     SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.black,
       statusBarColor: Colors.black,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness: Brightness.dark,
-      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: Brightness.light,
     ),
   );
 

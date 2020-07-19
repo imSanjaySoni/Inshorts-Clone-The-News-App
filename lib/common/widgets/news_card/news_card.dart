@@ -1,12 +1,16 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/theme.dart';
 import 'package:inshort_clone/global/global.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/routes/routes.gr.dart';
+import 'package:inshort_clone/services/news/offline_service.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:intl/intl.dart';
@@ -15,16 +19,19 @@ import 'bottom_action_bar.dart';
 import 'bottom_bar.dart';
 
 class NewsCard extends StatelessWidget {
-  final Articles articles;
+  final Articles article;
   final bool isFromSearch;
 
-  const NewsCard({Key key, this.articles, this.isFromSearch}) : super(key: key);
+  const NewsCard({Key key, this.article, this.isFromSearch}) : super(key: key);
 
   @override
   build(BuildContext context) {
     final provider = Provider.of<FeedProvider>(context, listen: false);
-    provider.setNewsURL(articles.url);
-    print(articles.url);
+
+    provider.setNewsURL(article.url);
+    removeArticleFromUnreads(article);
+
+    print(article.url);
 
     return GestureDetector(
       onTap: () {
@@ -68,13 +75,13 @@ class NewsCard extends StatelessWidget {
                     child: Stack(
                       fit: StackFit.expand,
                       children: <Widget>[
-                        articles.urlToImage != null
+                        article.urlToImage != null
                             ? Container(
                                 decoration: BoxDecoration(
                                   color: AppColor.surface,
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                      articles.urlToImage,
+                                      article.urlToImage,
                                     ),
                                     fit: BoxFit.cover,
                                   ),
@@ -95,22 +102,19 @@ class NewsCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        articles.urlToImage != null
+                        article.urlToImage != null
                             ? GestureDetector(
                                 onTap: () => Router.navigator.pushNamed(
                                   Router.expandedImageView,
                                   arguments: ExpandedImageViewArguments(
-                                    image: articles.urlToImage,
+                                    image: article.urlToImage,
                                   ),
                                 ),
                                 child: Center(
-                                  child: Hero(
-                                    tag: "photoView",
-                                    child: Image.network(
-                                      articles.urlToImage,
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment.topCenter,
-                                    ),
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                    imageUrl: article.urlToImage,
                                   ),
                                 ),
                               )
@@ -129,36 +133,45 @@ class NewsCard extends StatelessWidget {
                           heightFactor: 0.85,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(16, 25, 16, 16),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  articles.title,
-                                  style: AppTextStyle.newsTitle,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 4,
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  articles.description != null
-                                      ? articles.description
-                                      : "",
-                                  style: AppTextStyle.newsSubtitle,
-                                  overflow: TextOverflow.fade,
-                                  maxLines: 9,
-                                ),
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                Text(
-                                  "swipe left for more at the ${articles.source.name} / ${DateFormat("MMMM d").format(
-                                    DateTime.parse(articles.publishedAt),
-                                  )}",
-                                  style: AppTextStyle.newsFooter,
-                                )
-                              ],
+                            child: WatchBoxBuilder(
+                              box: Hive.box<Articles>('bookmarks'),
+                              builder: (context, box) => Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () => handleBookmarks(article),
+                                    child: Text(
+                                      article.title,
+                                      style: box.containsKey(article.url)
+                                          ? AppTextStyle.newsTitle
+                                              .copyWith(color: AppColor.accent)
+                                          : AppTextStyle.newsTitle,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 4,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text(
+                                    article.description != null
+                                        ? article.description
+                                        : "",
+                                    style: AppTextStyle.newsSubtitle,
+                                    overflow: TextOverflow.fade,
+                                    maxLines: 9,
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  Text(
+                                    "swipe left for more at the ${article.sourceName} / ${DateFormat("MMMM d").format(
+                                      DateTime.parse(article.publishedAt),
+                                    )}",
+                                    style: AppTextStyle.newsFooter,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -166,7 +179,7 @@ class NewsCard extends StatelessWidget {
                           alignment: Alignment.bottomCenter,
                           heightFactor: 0.15,
                           child: BottomBar(
-                            articles: articles,
+                            articles: article,
                           ),
                         ),
                         value.getFeedBottomActionbarVisible
@@ -175,6 +188,7 @@ class NewsCard extends StatelessWidget {
                                 heightFactor: 0.15,
                                 child: BottomActionBar(
                                   containerKey: _containerKey,
+                                  articles: article,
                                 ))
                             : Container(),
                         value.getWatermarkVisible

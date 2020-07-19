@@ -13,15 +13,15 @@ class AppTextStyle {
 
   static final TextStyle newsTitle = TextStyle(
     // color: AppColor.onBackground,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
   );
 
   static final TextStyle newsSubtitle = TextStyle(
     // color: AppColor.grey2,
     fontSize: 15,
-    height: 1.7,
-    fontWeight: FontWeight.w400,
+    height: 1.5,
+    fontWeight: FontWeight.w300,
   );
 
   static final TextStyle newsFooter = TextStyle(

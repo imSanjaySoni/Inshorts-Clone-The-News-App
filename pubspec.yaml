@@ -18,13 +18,15 @@ dependencies:
   webview_flutter: ^0.3.22+1
   flutter_bloc: ^4.0.0
   equatable: ^1.1.1
-  hive: ^1.4.1+1
-  hive_flutter: ^0.3.0+2
+  hive:
+  hive_flutter:
   path_provider: ^1.6.5
   esys_flutter_share: ^1.0.2
   provider:
   photo_view: ^0.9.2
   font_awesome_flutter: ^8.8.1
+  fluttertoast: ^7.0.1
+  cached_network_image: ^2.2.0+1
 
 dev_dependencies:
   flutter_test:
