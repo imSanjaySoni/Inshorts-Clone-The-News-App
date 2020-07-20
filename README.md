@@ -3,6 +3,8 @@
 
 # Inshorts clone (The News App)
 
+
+
 ### Instruction
 Replace the API Key field with your own key, for key visit [newsapi.org](https://themoviedb.org) and create your id.
 
@@ -18,7 +20,7 @@ Replace the API Key field with your own key, for key visit [newsapi.org](https:/
 
 - Dark Mode
 - Share News Card As Image
-- Offline Read (inprogress)
+- Offline Read
 - Watermark on shared news card
 - Webview
 
