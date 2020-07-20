@@ -34,4 +34,3 @@ Replace the API Key field with your own key, for key visit [newsapi.org](https:/
 - auto_route : Page Routing.
 - photo_view : gives extra features like image scaling.
 
-### this is temporary README.md I'll update it soon.
