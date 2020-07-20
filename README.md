@@ -1,6 +1,7 @@
-<img src=assets/icons/logo.png height=64, width=64/>
 
+<img src=banner.png width=100%/>
 # Inshorts clone (The News App)
+
 
 ## Features
 
