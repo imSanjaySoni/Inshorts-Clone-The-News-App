@@ -1,5 +1,6 @@
 
 <img src=banner.png width=100%/>
+
 # Inshorts clone (The News App)
 
 
