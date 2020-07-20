@@ -9,7 +9,7 @@
 Replace the API Key field with your own key, for key visit [newsapi.org](https://themoviedb.org) and create your id.
 
 ```
-  path lib/global/
+  path lib/global/global.dart
 ```
 
 ```dart
