@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:inshort_clone/model/news_model.dart';
+import 'package:inshort_clone/view/app_base/app_base.dart';
+import 'package:inshort_clone/view/discover_screen/discover.dart';
 
 class FeedProvider extends ChangeNotifier {
   String _appBarTitle;
@@ -12,7 +13,10 @@ class FeedProvider extends ChangeNotifier {
   int _curentArticalIndex = 0;
   PageController _feedPageController;
   PageController _screenController;
-  List<Articles> _articles = [];
+  List<Widget> _baseScreen = [
+    DiscoverScreen(),
+    BuildNewsScreen(),
+  ];
   String _newsURL = "https://google.com/";
   bool _webviwAdded = false;
   List<String> _lastGetRequest = List<String>();
@@ -39,7 +43,7 @@ class FeedProvider extends ChangeNotifier {
 
   PageController get getScreenController => this._screenController;
 
-  List<Articles> get getArticlesList => this._articles;
+  List<Widget> get getBaseScreenList => this._baseScreen;
 
   String get getNewsURL => _newsURL;
 
@@ -91,27 +95,27 @@ class FeedProvider extends ChangeNotifier {
 
   void setfeedPageController(PageController pageController) {
     this._feedPageController = pageController;
-    // notifyListeners();
+    notifyListeners();
   }
 
   void setScreenController(PageController pageController) {
     this._screenController = pageController;
-    // notifyListeners();
+    notifyListeners();
   }
 
-  void setArticlesList(List<Articles> articles) {
-    _articles.addAll(articles);
+  void addWebScren(Widget widget) {
+    _baseScreen.add(widget);
     notifyListeners();
   }
 
   void setNewsURL(String newsURL) {
     this._newsURL = newsURL;
-    // notifyListeners();
+    notifyListeners();
   }
 
   void setWebViewAdded() {
     this._webviwAdded = true;
-    // notifyListeners();
+    notifyListeners();
   }
 
   void setLastGetRequest(String request, String value) {

@@ -8,7 +8,6 @@ import 'package:inshort_clone/common/widgets/appbar.dart';
 import 'package:inshort_clone/controller/feed_controller.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/style/text_style.dart';
-import 'package:inshort_clone/view/discover_screen/discover.dart';
 import 'package:inshort_clone/view/feed_screen/feed.dart';
 import 'package:inshort_clone/view/web_screen/web.dart';
 import 'package:provider/provider.dart';
@@ -20,18 +19,12 @@ class AppBase extends StatefulWidget {
 
 class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
   int currentPage = 1;
-  List<Widget> _pageItems;
   PageController _pageController;
   FeedProvider provider;
 
   @override
   void initState() {
     provider = Provider.of<FeedProvider>(context, listen: false);
-
-    _pageItems = [
-      DiscoverScreen(),
-      buildNewsScreen(),
-    ];
 
     BlocProvider.of<NewsFeedBloc>(context)
       ..add(
@@ -71,7 +64,7 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
                   value.setAppBarVisible(true);
                 }
               },
-              children: _pageItems,
+              children: provider.getBaseScreenList,
             ),
             value.getAppBarVisible
                 ? Align(
@@ -87,7 +80,15 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  Widget buildNewsScreen() {
+  @override
+  bool get wantKeepAlive => true;
+}
+
+class BuildNewsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<FeedProvider>(context, listen: false);
+
     return BlocBuilder<NewsFeedBloc, NewsFeedState>(
       builder: (context, state) {
         if (state is NewsFeedInitialState) {
@@ -105,13 +106,12 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
           }
 
           if (provider.webviwAdded == false) {
-            _pageItems.add(
+            provider.addWebScren(
               WebScreen(
                 url: provider.getNewsURL,
                 isFromBottom: false,
               ),
             );
-            provider.setWebViewAdded();
           }
 
           return FeedScreen(
@@ -147,7 +147,4 @@ class _AppBaseState extends State<AppBase> with AutomaticKeepAliveClientMixin {
       },
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }
