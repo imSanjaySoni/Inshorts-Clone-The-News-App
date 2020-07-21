@@ -6,7 +6,7 @@ The Clone of the populer News App in India
 
 **_Try latest inshorts Clone app apk from below 👇_**
 
-[![inshorts Clone Apk](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/github_use/inshortsClone.apk)
+![inshorts Clone Apk](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/github_use/inshortsClone.apk)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/LICENSE)
 
