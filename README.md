@@ -16,6 +16,10 @@ The Clone of the populer News App in India
 
 Replace the API Key field with your own key, for key visit [newsapi.org](https://newsapi.org) and create your id.
 
+### Instruction
+
+Replace the API Key field with your own key, for key visit [newsapi.org](https://themoviedb.org) and create your id.
+
 ```
   path lib/global/global.dart
 ```
