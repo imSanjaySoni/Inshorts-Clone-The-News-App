@@ -6,12 +6,12 @@ The Clone of the populer News App in India
 
 **_Try latest inshorts Clone app apk from below 👇_**
 
-[inshortsClone.apk](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/github_use/inshortsClone.apk)
+[inshortsClone.apk](https://drive.google.com/file/d/1D0U3uX1GGse8BMWsQ-NIGgEIPkOJNL0a/view?usp=sharing)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/LICENSE)
-
+<!--
 [![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/releases/)
-
+-->
 ### Instruction
 
 Replace the API Key field with your own key, for key visit [newsapi.org](https://themoviedb.org) and create your id.
