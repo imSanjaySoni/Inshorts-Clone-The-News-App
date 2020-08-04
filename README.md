@@ -9,15 +9,22 @@ The Clone of the populer News App in India
 [inshortsClone.apk](https://drive.google.com/file/d/1D0U3uX1GGse8BMWsQ-NIGgEIPkOJNL0a/view?usp=sharing)
 
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/LICENSE)
+
 <!--
 [![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/releases/)
 -->
+
+### Update
+
 ### Instruction
 
 Replace the API Key field with your own key, for key visit [newsapi.org](https://themoviedb.org) and create your id.
 
 ```
-  path lib/global/global.dart
+  |-- lib
+  |  |-- global
+  |      |-- global.dart
+
 ```
 
 ```dart
@@ -32,6 +39,12 @@ Replace the API Key field with your own key, for key visit [newsapi.org](https:/
 - Offline Read
 - Watermark on shared news card
 - Webview
+
+### ScreenShots
+
+|                                                    Dscover                                                     |                                                    Feed                                                    |                                                    Settings                                                    |                                              Forgot Password Page                                              |
+| :------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
+| ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/discover.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/feed.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/settings.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/language.png?raw=true) |
 
 ## Packages Used
 

@@ -7,7 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/controller/provider.dart';
-import 'package:inshort_clone/controller/theme.dart';
+import 'package:inshort_clone/controller/settings.dart';
 import 'package:inshort_clone/global/global.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/routes/routes.gr.dart';
@@ -206,7 +206,7 @@ class NewsCard extends StatelessWidget {
                                       children: <Widget>[
                                         Row(
                                           children: <Widget>[
-                                            Consumer<ThemeProvider>(
+                                            Consumer<SettingsProvider>(
                                               builder:
                                                   (context, theme, child) =>
                                                       FaIcon(
