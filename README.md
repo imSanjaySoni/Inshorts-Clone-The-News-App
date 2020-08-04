@@ -15,6 +15,22 @@ The Clone of the populer News App in India
 -->
 
 ### Update
+##### Multiple Language Support
+
+<table>
+  
+  <row>
+  <td>
+    <img src="https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/settings.png?raw=true"/> 
+  
+  </td>
+   <td>
+    <img src="https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/language.png?raw=true"/> 
+ 
+ </td>
+  </row>
+</table>
+
 
 ### Instruction
 
@@ -42,9 +58,9 @@ Replace the API Key field with your own key, for key visit [newsapi.org](https:/
 
 ### ScreenShots
 
-|                                                    Dscover                                                     |                                                    Feed                                                    |                                                    Settings                                                    |                                              Forgot Password Page                                              |
+|                                                    Dscover                                                     |                                                    Feed                                                    |                                                    Settings                                                    |                                              Language Support                                              |
 | :------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
-| ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/discover.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/feed.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/settings.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/tree/master/screenshots/language.png?raw=true) |
+| ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/discover.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/feed.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/settings.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/language.png?raw=true) |
 
 ## Packages Used
 
