@@ -15,11 +15,11 @@ The Clone of the populer News App in India
 -->
 
 ### Update
-##### Multiple Language Support
+#### Multiple Language Support
 
 |                                                    English                                                     |                                                    हिंदी                                                    |                                                    मराठी                                                    |                                              ಕನ್ನಡ                                              |
 | :------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------: |
-| ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/discover.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/hindi.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/marathi.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/kannada.png?raw=true)|
+| ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/english.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/hindi.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/marathi.png?raw=true) | ![](https://github.com/imSanjaySoni/Inshorts-Clone-The-News-App/blob/master/screenshots/kannada.png?raw=true)|
 
 
 
