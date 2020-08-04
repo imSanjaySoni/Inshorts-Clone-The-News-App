@@ -23,7 +23,7 @@ class CategoryCard extends StatelessWidget {
       },
       child: Container(
         margin: const EdgeInsets.all(8),
-        height: Global.height(context) * 0.12,
+        height: Global.height(context) * 0.14,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

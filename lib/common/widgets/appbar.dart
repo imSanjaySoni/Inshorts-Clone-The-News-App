@@ -1,6 +1,7 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
 import 'package:inshort_clone/controller/feed_controller.dart';
@@ -52,7 +53,8 @@ class CustomAppBar extends StatelessWidget {
                                   },
                                 ),
                                 Text(
-                                  "Discover",
+                                  AppLocalizations.of(context)
+                                      .translate("discover"),
                                   style: AppTextStyle.appBarTitle,
                                 )
                               ],
@@ -63,8 +65,10 @@ class CustomAppBar extends StatelessWidget {
                         index == 1
                             ? value.getAppBarTitle != null
                                 ? value.getAppBarTitle
-                                : "My Feed"
-                            : "Discover",
+                                : AppLocalizations.of(context)
+                                    .translate("my_feed")
+                            : AppLocalizations.of(context)
+                                .translate("discover"),
                         style: AppTextStyle.appBarTitle.copyWith(
                           fontWeight: FontWeight.w600,
                           fontSize: 16,
@@ -82,7 +86,8 @@ class CustomAppBar extends StatelessWidget {
                                 ? Text(
                                     value.getAppBarTitle != null
                                         ? value.getAppBarTitle
-                                        : "My Feed",
+                                        : AppLocalizations.of(context)
+                                            .translate("my_feed"),
                                     style: AppTextStyle.appBarTitle,
                                     overflow: TextOverflow.ellipsis,
                                     textDirection: TextDirection.rtl,

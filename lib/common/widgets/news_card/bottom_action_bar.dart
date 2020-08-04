@@ -12,6 +12,8 @@ import 'package:inshort_clone/style/text_style.dart';
 
 import 'package:provider/provider.dart';
 
+import '../../../aplication_localization.dart';
+
 class BottomActionBar extends StatelessWidget {
   final containerKey;
   final Articles articles;
@@ -32,7 +34,7 @@ class BottomActionBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           actionButton(
-            title: "Share",
+            title: AppLocalizations.of(context).translate("share"),
             icon: FeatherIcons.share2,
             onTap: () {
               Provider.of<FeedProvider>(context, listen: false)
@@ -45,7 +47,7 @@ class BottomActionBar extends StatelessWidget {
           WatchBoxBuilder(
             box: Hive.box<Articles>('bookmarks'),
             builder: (context, snap) => actionButton(
-              title: "Bookmark",
+              title: AppLocalizations.of(context).translate("bookmark"),
               icon: snap.containsKey(articles.url)
                   ? Icons.bookmark
                   : FeatherIcons.bookmark,

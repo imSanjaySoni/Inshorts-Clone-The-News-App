@@ -12,6 +12,8 @@ import 'package:inshort_clone/view/feed_screen/feed.dart';
 import 'package:inshort_clone/view/web_screen/web.dart';
 import 'package:provider/provider.dart';
 
+import '../../aplication_localization.dart';
+
 class AppBase extends StatefulWidget {
   @override
   _AppBaseState createState() => _AppBaseState();
@@ -99,7 +101,7 @@ class BuildNewsScreen extends StatelessWidget {
           if (state.news.length == 0) {
             return Center(
               child: Text(
-                "Nothing Found ! \n",
+                "${AppLocalizations.of(context).translate('not_found')}\n",
                 style: AppTextStyle.newsTitle,
               ),
             );
@@ -130,12 +132,12 @@ class BuildNewsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "No Internet Connection!",
+                  AppLocalizations.of(context).translate('error'),
                   style: AppTextStyle.newsTitle,
                 ),
                 SizedBox(height: 8),
                 Text(
-                  "Please check your internet connection and retry",
+                  AppLocalizations.of(context).translate('error_message'),
                   style: AppTextStyle.searchbar,
                   textAlign: TextAlign.center,
                 )

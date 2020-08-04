@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/theme.dart';
 import 'package:inshort_clone/global/global.dart';
@@ -165,7 +166,7 @@ class NewsCard extends StatelessWidget {
                                     height: 16,
                                   ),
                                   Text(
-                                    "swipe left for more at the ${article.sourceName} / ${DateFormat("MMMM d").format(
+                                    "${AppLocalizations.of(context).translate("swipe_message")} ${article.sourceName} / ${DateFormat("MMMM d").format(
                                       DateTime.parse(article.publishedAt),
                                     )}",
                                     style: AppTextStyle.newsFooter,

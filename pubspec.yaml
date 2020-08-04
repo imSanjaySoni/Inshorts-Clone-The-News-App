@@ -10,6 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
   intl:
   dio:
   cupertino_icons: ^0.1.2
@@ -29,7 +32,6 @@ dependencies:
   cached_network_image: ^2.2.0+1
   permission_handler: ^5.0.1+1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -44,6 +46,10 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+    - assets/lang/en.json
+    - assets/lang/kn.json
+    - assets/lang/hi.json
+    - assets/lang/mr.json
 
   fonts:
     - family: Montserrat

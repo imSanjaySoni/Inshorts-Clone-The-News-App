@@ -1,9 +1,10 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/routes/routes.gr.dart';
 import 'package:inshort_clone/style/colors.dart';
 
-appSearchBar() {
+appSearchBar(context) {
   return PreferredSize(
     child: Material(
       elevation: 1,
@@ -28,7 +29,7 @@ appSearchBar() {
               ),
               SizedBox(width: 16),
               Text(
-                "Search for news",
+                AppLocalizations.of(context).translate("search_message"),
                 style: TextStyle(
                   color: AppColor.iconGrey,
                   fontWeight: FontWeight.w500,

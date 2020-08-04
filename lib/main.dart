@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:inshort_clone/controller/provider.dart';
-import 'package:inshort_clone/controller/theme.dart';
+import 'package:inshort_clone/controller/settings.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
@@ -15,12 +15,15 @@ void main() async {
   Hive.init(docPath.path);
   Hive.registerAdapter(ArticlesAdapter());
 
-  await Hive.openBox('themeMode');
+  await Hive.openBox('settingsBox');
   await Hive.openBox<Articles>('bookmarks');
   await Hive.openBox<Articles>('unreads');
 
-  final _isDarkModeOn = await Hive.box('themeMode').get('isDarkModeOn');
-  ThemeProvider().darkTheme(_isDarkModeOn ?? false);
+  final _isDarkModeOn = await Hive.box('settingsBox').get('isDarkModeOn');
+  SettingsProvider().darkTheme(_isDarkModeOn ?? false);
+
+  final _lang = await Hive.box('settingsBox').get('activeLang');
+  SettingsProvider().setLang(_lang);
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -34,7 +37,8 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider<SettingsProvider>(
+            create: (_) => SettingsProvider()),
         ChangeNotifierProvider<FeedProvider>(create: (_) => FeedProvider()),
       ],
       child: App(),

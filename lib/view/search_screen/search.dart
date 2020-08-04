@@ -1,6 +1,7 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_bloc.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_event.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_state.dart';
@@ -23,7 +24,8 @@ class SearchScreen extends StatelessWidget {
             textInputAction: TextInputAction.search,
             style: AppTextStyle.searchbar,
             decoration: InputDecoration(
-              hintText: "Search for news",
+              hintText:
+                  AppLocalizations.of(context).translate("search_message"),
               border: InputBorder.none,
               suffixIcon: IconButton(
                 icon: Icon(
@@ -60,7 +62,7 @@ class SearchScreen extends StatelessWidget {
                     CircularProgressIndicator(),
                     SizedBox(height: 16),
                     Text(
-                      "Loading Shots..",
+                      AppLocalizations.of(context).translate("loading_message"),
                       style: AppTextStyle.searchbar,
                     )
                   ]));
@@ -68,7 +70,7 @@ class SearchScreen extends StatelessWidget {
               if (state.news.length == 0) {
                 return Center(
                     child: Text(
-                  "Nothing Found ! \n",
+                  "${AppLocalizations.of(context).translate("not_found")}\n",
                   style: AppTextStyle.newsTitle,
                 ));
               }
@@ -91,12 +93,12 @@ class SearchScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "No Internet Connection!",
+                      AppLocalizations.of(context).translate('error'),
                       style: AppTextStyle.newsTitle,
                     ),
                     SizedBox(height: 8),
                     Text(
-                      "Please check your internet connection and retry!",
+                      AppLocalizations.of(context).translate('error_message'),
                       style: AppTextStyle.searchbar,
                       textAlign: TextAlign.center,
                     )

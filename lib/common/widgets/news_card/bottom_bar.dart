@@ -8,6 +8,8 @@ import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/web_screen/web.dart';
 
+import '../../../aplication_localization.dart';
+
 class BottomBar extends StatelessWidget {
   final Articles articles;
 
@@ -68,7 +70,7 @@ class BottomBar extends StatelessWidget {
                     height: 4,
                   ),
                   Text(
-                    "Tap to read more",
+                    AppLocalizations.of(context).translate("tap_message"),
                     style: AppTextStyle.newsBottomSubtitle,
                     overflow: TextOverflow.fade,
                   ),
