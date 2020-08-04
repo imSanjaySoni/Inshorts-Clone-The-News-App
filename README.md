@@ -27,6 +27,7 @@ Replace the API Key field with your own key, for key visit [newsapi.org](https:/
 ## Features
 
 - Dark Mode
+- Multi Language Support [ English, हिंदी, मराठी, ಕನ್ನಡ ]
 - Share News Card As Image
 - Offline Read
 - Watermark on shared news card
