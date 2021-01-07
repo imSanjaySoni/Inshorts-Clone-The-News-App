@@ -7,7 +7,7 @@ import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
 import 'package:inshort_clone/controller/feed_controller.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/global/global.dart';
-import 'package:inshort_clone/routes/routes.gr.dart';
+import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:provider/provider.dart';
@@ -39,8 +39,8 @@ class CustomAppBar extends StatelessWidget {
                                 FeatherIcons.settings,
                               ),
                               onPressed: () {
-                                Router.navigator
-                                    .pushNamed(Router.settingsScreen);
+                                // Router.navigator
+                                //     .pushNamed(Router.settingsScreen);
                               },
                             )
                           : Row(

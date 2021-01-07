@@ -1,7 +1,7 @@
 import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:inshort_clone/aplication_localization.dart';
-import 'package:inshort_clone/routes/routes.gr.dart';
+import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/style/colors.dart';
 
 appSearchBar(context) {
@@ -11,7 +11,7 @@ appSearchBar(context) {
       // color: Colors.white,
       child: GestureDetector(
         onTap: () {
-          Router.navigator.pushNamed(Router.searchScreen);
+          Rouut.navigator.pushNamed(Rouut.searchScreen);
         },
         child: Container(
           margin: const EdgeInsets.fromLTRB(16, 98, 16, 16),

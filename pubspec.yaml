@@ -24,7 +24,7 @@ dependencies:
   hive:
   hive_flutter:
   path_provider: ^1.6.5
-  esys_flutter_share: ^1.0.2
+  esys_flutter_share: ^1.0.1
   provider:
   photo_view: ^0.9.2
   font_awesome_flutter: ^8.8.1

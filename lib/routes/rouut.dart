@@ -11,7 +11,7 @@ import 'package:inshort_clone/view/feed_screen/feed.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/view/app_base/app_base.dart';
 
-class Router {
+class Rouut {
   static const searchScreen = '/search-screen';
   static const settingsScreen = '/settings-screen';
   static const bookmarkScreen = '/bookmark-screen';
@@ -22,28 +22,28 @@ class Router {
   static const expandedImageView = '/expandedImageView';
 
   static GlobalKey<NavigatorState> get navigatorKey =>
-      getNavigatorKey<Router>();
+      getNavigatorKey<Rouut>();
   static NavigatorState get navigator => navigatorKey.currentState;
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
     switch (settings.name) {
-      case Router.searchScreen:
+      case Rouut.searchScreen:
         return MaterialPageRoute(
           builder: (_) => SearchScreen(),
           settings: settings,
         );
-      case Router.settingsScreen:
+      case Rouut.settingsScreen:
         return MaterialPageRoute(
           builder: (_) => SettingsScreen(),
           settings: settings,
         );
-      case Router.bookmarkScreen:
+      case Rouut.bookmarkScreen:
         return MaterialPageRoute(
           builder: (_) => BookmarkScreen(),
           settings: settings,
         );
-      case Router.webScreen:
+      case Rouut.webScreen:
         if (hasInvalidArgs<WebViewArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<WebViewArguments>(args);
         }
@@ -55,12 +55,12 @@ class Router {
           ),
           settings: settings,
         );
-      case Router.discoverScreen:
+      case Rouut.discoverScreen:
         return MaterialPageRoute(
           builder: (_) => DiscoverScreen(),
           settings: settings,
         );
-      case Router.expandedImageView:
+      case Rouut.expandedImageView:
         if (hasInvalidArgs<ExpandedImageViewArguments>(args,
             isRequired: true)) {
           return misTypedArgsRoute<ExpandedImageViewArguments>(args);
@@ -73,7 +73,7 @@ class Router {
           settings: settings,
         );
 
-      case Router.feedScreen:
+      case Rouut.feedScreen:
         if (hasInvalidArgs<FeedScreenArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<FeedScreenArguments>(args);
         }
@@ -87,7 +87,7 @@ class Router {
           settings: settings,
         );
 
-      case Router.appBase:
+      case Rouut.appBase:
         return MaterialPageRoute(
           builder: (_) => AppBase(),
           settings: settings,
