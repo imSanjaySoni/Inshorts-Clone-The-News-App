@@ -10,7 +10,7 @@ import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/settings.dart';
 import 'package:inshort_clone/global/global.dart';
 import 'package:inshort_clone/model/news_model.dart';
-import 'package:inshort_clone/routes/routes.gr.dart';
+import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/services/news/offline_service.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
@@ -105,12 +105,12 @@ class NewsCard extends StatelessWidget {
                         ),
                         article.urlToImage != null
                             ? GestureDetector(
-                                onTap: () => Router.navigator.pushNamed(
-                                  Router.expandedImageView,
-                                  arguments: ExpandedImageViewArguments(
-                                    image: article.urlToImage,
-                                  ),
-                                ),
+                                // onTap: () => Router.navigator.pushNamed(
+                                //   Router.expandedImageView,
+                                //   arguments: ExpandedImageViewArguments(
+                                //     image: article.urlToImage,
+                                //   ),
+                                // ),
                                 child: Center(
                                   child: CachedNetworkImage(
                                     fit: BoxFit.cover,
