@@ -1,6 +1,9 @@
+// Package imports:
 import 'package:equatable/equatable.dart';
-import 'package:inshort_clone/model/news_model.dart';
 import 'package:meta/meta.dart';
+
+// Project imports:
+import 'package:inshort_clone/model/news_model.dart';
 
 abstract class NewsFeedState extends Equatable {}
 

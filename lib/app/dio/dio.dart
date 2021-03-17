@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:dio/dio.dart';
+
+// Project imports:
 import 'package:inshort_clone/global/global.dart';
 
 class GetDio {

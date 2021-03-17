@@ -1,13 +1,18 @@
+// Dart imports:
 import 'dart:ui';
 
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
+
+// Project imports:
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/web_screen/web.dart';
-
 import '../../../aplication_localization.dart';
 
 class BottomBar extends StatelessWidget {

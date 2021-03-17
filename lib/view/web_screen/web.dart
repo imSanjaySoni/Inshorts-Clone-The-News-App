@@ -1,10 +1,17 @@
+// Dart imports:
 import 'dart:async';
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:inshort_clone/controller/feed_controller.dart';
-import 'package:inshort_clone/controller/provider.dart';
+
+// Package imports:
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+// Project imports:
+import 'package:inshort_clone/controller/feed_controller.dart';
+import 'package:inshort_clone/controller/provider.dart';
 
 class WebScreen extends StatefulWidget {
   final String url;

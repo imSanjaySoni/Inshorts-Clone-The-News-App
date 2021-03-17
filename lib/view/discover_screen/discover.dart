@@ -1,5 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
@@ -8,8 +14,6 @@ import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/view/discover_screen/widgets/category_card.dart';
 import 'package:inshort_clone/view/discover_screen/widgets/headline.dart';
 import 'package:inshort_clone/view/discover_screen/widgets/topics_card.dart';
-import 'package:provider/provider.dart';
-
 import 'widgets/app_bar.dart';
 
 class DiscoverScreen extends StatefulWidget {

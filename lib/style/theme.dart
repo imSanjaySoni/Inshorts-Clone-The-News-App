@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:inshort_clone/style/colors.dart';
 
 final ThemeData kDarkThemeData = ThemeData(

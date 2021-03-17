@@ -1,17 +1,20 @@
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+// Package imports:
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/services/news/offline_service.dart';
 import 'package:inshort_clone/services/news/share_service.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
-
-import 'package:provider/provider.dart';
-
 import '../../../aplication_localization.dart';
 
 class BottomActionBar extends StatelessWidget {

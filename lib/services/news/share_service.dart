@@ -1,12 +1,18 @@
+// Dart imports:
 import 'dart:typed_data';
+import 'dart:ui' as ui;
 
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:inshort_clone/controller/provider.dart';
-import 'dart:ui' as ui;
+
+// Package imports:
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:provider/provider.dart';
+
+// Project imports:
+import 'package:inshort_clone/controller/provider.dart';
 
 void convertWidgetToImageAndShare(BuildContext context, containerKey) async {
   RenderRepaintBoundary renderRepaintBoundary =

@@ -1,5 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_state.dart';
@@ -10,8 +16,6 @@ import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/style/text_style.dart';
 import 'package:inshort_clone/view/feed_screen/feed.dart';
 import 'package:inshort_clone/view/web_screen/web.dart';
-import 'package:provider/provider.dart';
-
 import '../../aplication_localization.dart';
 
 class AppBase extends StatefulWidget {

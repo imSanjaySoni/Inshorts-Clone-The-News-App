@@ -1,5 +1,10 @@
-import 'package:bloc/bloc.dart';
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Package imports:
+import 'package:bloc/bloc.dart';
+
+// Project imports:
 import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_state.dart';
 import 'package:inshort_clone/model/news_model.dart';

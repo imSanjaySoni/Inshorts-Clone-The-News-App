@@ -1,11 +1,16 @@
-import 'package:dio/dio.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/app/dio/dio.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/services/news/offline_service.dart';
-import 'package:provider/provider.dart';
 
 abstract class NewsFeedRepository {
   Future<List<Articles>> getNewsByTopic(String topic);

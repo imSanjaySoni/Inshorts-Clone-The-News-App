@@ -1,5 +1,10 @@
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+
+// Project imports:
 import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/style/colors.dart';

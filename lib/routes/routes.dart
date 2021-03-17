@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:auto_route/auto_route_annotations.dart';
+
+// Project imports:
 import 'package:inshort_clone/view/app_base/app_base.dart';
 import 'package:inshort_clone/view/bookmarked_screen/bookmark.dart';
 import 'package:inshort_clone/view/discover_screen/discover.dart';

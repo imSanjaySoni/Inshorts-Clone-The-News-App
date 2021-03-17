@@ -1,5 +1,8 @@
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ExpandedImageView extends StatelessWidget {
