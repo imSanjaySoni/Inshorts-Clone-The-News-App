@@ -1,6 +1,12 @@
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
 import 'package:inshort_clone/bloc/feed/news_feed_event.dart';
@@ -10,7 +16,6 @@ import 'package:inshort_clone/global/global.dart';
 import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
-import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget {
   final int index;

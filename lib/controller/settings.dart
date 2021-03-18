@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:hive/hive.dart';
 
 class SettingsProvider extends ChangeNotifier {

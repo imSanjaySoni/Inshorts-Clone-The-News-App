@@ -1,10 +1,15 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/common/widgets/news_appbar.dart';
 import 'package:inshort_clone/common/widgets/news_card/news_card.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/model/news_model.dart';
 import 'package:inshort_clone/view/web_screen/web.dart';
-import 'package:provider/provider.dart';
 
 class FeedScreen extends StatefulWidget {
   final List<Articles> articals;

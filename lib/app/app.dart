@@ -1,14 +1,18 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/bloc/feed/news_feed_bloc.dart';
 import 'package:inshort_clone/bloc/serach_feed/search_feed_bloc.dart';
 import 'package:inshort_clone/controller/settings.dart';
 import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/services/news/news_service.dart';
 import 'package:inshort_clone/style/theme.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
 import '../aplication_localization.dart';
 
 class App extends StatelessWidget {

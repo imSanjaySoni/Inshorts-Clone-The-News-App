@@ -1,11 +1,16 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/settings.dart';
 import 'package:inshort_clone/model/news_model.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
 import 'app/app.dart';
 
 void main() async {

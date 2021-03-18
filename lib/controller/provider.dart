@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:inshort_clone/view/app_base/app_base.dart';
 import 'package:inshort_clone/view/discover_screen/discover.dart';
 

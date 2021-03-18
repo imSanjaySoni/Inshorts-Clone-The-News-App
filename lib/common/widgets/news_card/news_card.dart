@@ -1,10 +1,18 @@
+// Dart imports:
 import 'dart:ui';
 
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:inshort_clone/aplication_localization.dart';
 import 'package:inshort_clone/controller/provider.dart';
 import 'package:inshort_clone/controller/settings.dart';
@@ -14,8 +22,6 @@ import 'package:inshort_clone/routes/rouut.dart';
 import 'package:inshort_clone/services/news/offline_service.dart';
 import 'package:inshort_clone/style/colors.dart';
 import 'package:inshort_clone/style/text_style.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'bottom_action_bar.dart';
 import 'bottom_bar.dart';
 

@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
+
+// Project imports:
 import 'package:inshort_clone/model/news_model.dart';
 
 final Box<Articles> bookmarksBox = Hive.box('bookmarks');
